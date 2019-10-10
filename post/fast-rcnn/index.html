@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="Fourth-year Undergraduate">
+  <meta name="description" content="Fast R-CNN 相比于classification，object detection任务准确度更低，难度更大，主要由于两个挑战： 1.需要处理大量的prop">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://x-lai.github.io/talk/">
+  <link rel="alternate" hreflang="en-us" href="https://x-lai.github.io/post/fast-rcnn/">
 
   
 
@@ -94,14 +94,12 @@
 
 
   
-  <link rel="alternate" href="/talk/index.xml" type="application/rss+xml" title="Xin LAI">
-  
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon-32.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://x-lai.github.io/talk/">
+  <link rel="canonical" href="https://x-lai.github.io/post/fast-rcnn/">
 
   
   
@@ -114,18 +112,65 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="Xin LAI">
-  <meta property="og:url" content="https://x-lai.github.io/talk/">
-  <meta property="og:title" content="Recent &amp; Upcoming Talks | Xin LAI">
-  <meta property="og:description" content="Fourth-year Undergraduate"><meta property="og:image" content="https://x-lai.github.io/img/icon-192.png">
+  <meta property="og:url" content="https://x-lai.github.io/post/fast-rcnn/">
+  <meta property="og:title" content="Fast R-CNN | Xin LAI">
+  <meta property="og:description" content="Fast R-CNN 相比于classification，object detection任务准确度更低，难度更大，主要由于两个挑战： 1.需要处理大量的prop"><meta property="og:image" content="https://x-lai.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://x-lai.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
   
     
+      <meta property="article:published_time" content="2019-07-10T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2019-07-10T00:00:00&#43;00:00">
   
 
   
 
 
+    
 
+
+
+
+
+
+  
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://x-lai.github.io/post/fast-rcnn/"
+  },
+  "headline": "Fast R-CNN",
+  
+  "datePublished": "2019-07-10T00:00:00Z",
+  "dateModified": "2019-07-10T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Xin LAI"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xin LAI",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://x-lai.github.io/img/icon-512.png"
+    }
+  },
+  "description": "Fast R-CNN 相比于classification，object detection任务准确度更低，难度更大，主要由于两个挑战： 1.需要处理大量的prop"
+}
+</script>
+
+  
 
   
 
@@ -133,10 +178,13 @@
   
 
 
+  
 
 
 
-  <title>Recent &amp; Upcoming Talks | Xin LAI</title>
+
+
+  <title>Fast R-CNN | Xin LAI</title>
 
 </head>
 
@@ -361,48 +409,385 @@
 </nav>
 
 
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Fast R-CNN</h1>
+
+  
+
+  
+    
+
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    2019-07-10
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    4 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://x-lai.github.io/post/fast-rcnn/&amp;text=Fast%20R-CNN" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://x-lai.github.io/post/fast-rcnn/&amp;t=Fast%20R-CNN" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Fast%20R-CNN&amp;body=https://x-lai.github.io/post/fast-rcnn/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://x-lai.github.io/post/fast-rcnn/&amp;title=Fast%20R-CNN" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Fast%20R-CNN%20https://x-lai.github.io/post/fast-rcnn/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://x-lai.github.io/post/fast-rcnn/&amp;title=Fast%20R-CNN" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<h1 id="fast-r-cnn">Fast R-CNN</h1>
+
+<p>相比于classification，object detection任务准确度更低，难度更大，主要由于两个挑战：</p>
+
+<p>1.需要处理大量的proposal；</p>
+
+<p>2.在region proposal的rough localization的基础上需要refine以获得准确的localization。</p>
+
+<hr />
+
+<h2 id="r-cnn-spp-net的缺点">R-CNN/SPP-net的缺点：</h2>
+
+<p>1.R-CNN和SPP-net都是multi-stage的；</p>
+
+<p>2.R-CNN运行慢，而且训练时耗费时间和空间；</p>
+
+<p>3.SPP-net在fine-tune时不会更新spatial pyramid pooling之前的网络参数。</p>
+
+<hr />
+
+<h2 id="architecture">Architecture</h2>
+
+<p>和SPP-net类似，Fast R-CNN将整个图片作为输入，得到feature map，并得到每个region proposal在feature map中对应的window，经过RoI pooling layer得到长度固定的向量。之后，每个特征向量都会经过一系列fc层，最终分为两支：1）softmax层classifier，2）refined bounding-box position regressor。</p>
+
+<h3 id="roi-pooling-layer">RoI pooling layer</h3>
+
+<p>将h$\times$w的RoI window分割成H$\times$W grid of sub-windows（H和W都是hyperparameters），每个sub-window的大小约为h/H$\times$w/W，每个sub-window都通过max pooling得到一个response。每一个channel独立进行pooling。最终不同size的window都能输出成size为H$\times$W的向量。</p>
+
+<h3 id="transformations-of-pre-trained-networks">Transformations of pre-trained networks</h3>
+
+<p>从pre-trained network到新的模型需要经历3个transformations：</p>
+
+<p>1.最后一个max-pooling layer换成RoI Pooling layer;</p>
+
+<p>2.1000-way classifier要换成(K+1)-way classifier和bounding-box regressor;</p>
+
+<p>3.输入有两个：1）图片，2）RoI</p>
+
+<h3 id="fine-tuning">Fine-tuning</h3>
+
+<p>SPP-net在spp layer之前的层中的weights在fine-tuning的时候是不会更新的，这就有可能会限制识别的准确度。但是为什么不会更新呢？关键在于同一个batch中的sample（即SPP-net的RoI window）会来自于不同的图片，如果要更新在spp layer之前的weights，那么就需要首先得到每个sample对应的RoI window的receptive field。而一个window的receptive field会非常大，甚至常常是整个图片，所以当同一个batch的sample来自不同的图片时，在一个batch训练过程中就需要输入很多张图片，这会导致极度的inefficiency。</p>
+
+<p>本文提出了一种更加efficient的训练方法来改善这个问题：hierarchical sampling。即在训练的时候，为了得到一个batch，先sample N个images，然后再从其中每个image中sample R/N个RoI（R是batch size）。当N越小，一个batch的计算量就会越小（因为处理的图片少了，共享的计算多了）。在本文中取N=2，R=128。</p>
+
+<p>此外，和R-CNN、SPP-net不同的是，Fast R-CNN不需要分multi stages，只需要一个stage就能同时优化softmax classifier和bounding-box regressor。具体有：</p>
+
+<p><em>Multi-task loss</em></p>
+
+<p>$L(p,u,t^u,v)=L_{cls}(p,u)+\lambda[u \ge 1]L_{loc}(t^u,v)$</p>
+
+<p>Multi-task loss如上式所示。其中$L_{cls}(p,u)=-log{p_u}$，$L_{loc}(t^u,v)=\sum_{i \in {x,y,w,h}}{smooth_{L_1}(t_i^u-v_i)}$，$smooth_{L_1}(x)=\left\{\begin{aligned}
+&amp; 0.5x^2  &amp; if \  |x| &lt; 1 \\ &amp; |x|-0.5  &amp; otherwise
+\end{aligned}
+\right.$。</p>
+
+<p>$p$是一个K+1维向量，表示将该window分到K类中每一类的概率（此外还需再加上background类）。$u$和$v$分别表示该window被标注的ground-truth的类别和被标注的ground-truth的四元组$(x,y,w,h)$，$t$表示Fast R-CNN使用该window预测得到的各个类别对应的四元组，$t^u$表示类别$u$对应的四元组$(t_x^u, t_y^u,t_w^u,t_h^u)$。</p>
+
+<h3 id="scale-invariance">Scale invariance</h3>
+
+<p>有两种方式实现scale invariant object detection：1）brute force：每张图片都以一个预先设定的size作为输入进行处理，2）multi-scale approach：在test的时候，使用image pyramid来scale-normalize每个object proposal，在multi-scale training的时候，在每次采样图片的时候，随机选择一个pyramid scale进行训练（也作为一种data augmentation的方式）。</p>
+
+<hr />
+
+    </div>
+
+    
+
+
+
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/object-detection/">object detection</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
   
 
 
 
 
 
-
-
-
-
-
-
-
-  
 
   
   
   
     
   
-<div class="universal-wrapper pt-3">
-  <h1>Recent &amp; Upcoming Talks</h1>
-
   
+  <div class="media author-card">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_huc1427b3dbbf635ca43eeb36be93c81a0_715777_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
+    
 
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://x-lai.github.io/">Xin LAI</a></h5>
+      <h6 class="card-subtitle">Fourth-year Undergraduate</h6>
+      <p class="card-text">My research interests include object detection, image debluring.</p>
+      <ul class="network-icon" aria-hidden="true">
   
-</div>
-
-
-
-<div class="universal-wrapper">
-  <div class="row">
-    <div class="col-lg-12">
-
+    
+    
+    
       
-
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:laixin1998@outlook.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
       
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/img/wechat.jpg" >
+        <i class="fab fa-weixin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/X-Lai" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
 
     </div>
   </div>
 
-</div>
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/sppnet/">SPPNet</a></li>
+          
+          <li><a href="/post/r-cnn-regions-with-cnn-feature/">R-CNN</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+  
+    <div id="commento"></div>
+<script src="https://cdn.commento.io/js/commento.js" defer></script>
+
+  
+</section>
+
+
+
+  </div>
+</article>
 
       
 

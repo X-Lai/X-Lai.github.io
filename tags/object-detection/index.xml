@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Xin LAI</title>
-    <link>https://x-lai.github.io/</link>
-      <atom:link href="https://x-lai.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <description>Xin LAI</description>
+    <title>object detection | Xin LAI</title>
+    <link>https://x-lai.github.io/tags/object-detection/</link>
+      <atom:link href="https://x-lai.github.io/tags/object-detection/index.xml" rel="self" type="application/rss+xml" />
+    <description>object detection</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://x-lai.github.io/img/icon-192.png</url>
-      <title>Xin LAI</title>
-      <link>https://x-lai.github.io/</link>
+      <title>object detection</title>
+      <link>https://x-lai.github.io/tags/object-detection/</link>
     </image>
     
     <item>
