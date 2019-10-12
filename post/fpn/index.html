@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="Fourth-year Undergraduate">
+  <meta name="description" content="Feature Pyramid Networks for Object Detection feature pyramids对于识别不同scale的物体有着重要的作用。但是当feature map随着网络的深度由于subsampling">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://x-lai.github.io/">
+  <link rel="alternate" hreflang="en-us" href="https://x-lai.github.io/post/fpn/">
 
   
 
@@ -94,14 +94,12 @@
 
 
   
-  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Xin LAI">
-  
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon-32.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://x-lai.github.io/">
+  <link rel="canonical" href="https://x-lai.github.io/post/fpn/">
 
   
   
@@ -114,29 +112,65 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="Xin LAI">
-  <meta property="og:url" content="https://x-lai.github.io/">
-  <meta property="og:title" content="Xin LAI">
-  <meta property="og:description" content="Fourth-year Undergraduate"><meta property="og:image" content="https://x-lai.github.io/img/icon-192.png">
+  <meta property="og:url" content="https://x-lai.github.io/post/fpn/">
+  <meta property="og:title" content="FPN | Xin LAI">
+  <meta property="og:description" content="Feature Pyramid Networks for Object Detection feature pyramids对于识别不同scale的物体有着重要的作用。但是当feature map随着网络的深度由于subsampling"><meta property="og:image" content="https://x-lai.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://x-lai.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2019-10-12T00:00:00&#43;00:00">
+    
+      <meta property="article:published_time" content="2019-10-12T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2019-10-12T00:00:00&#43;00:00">
   
 
   
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://x-lai.github.io/?q={search_term_string}",
-    "query-input": "required name=search_term_string"
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://x-lai.github.io/post/fpn/"
   },
-  "url": "https://x-lai.github.io/"
+  "headline": "FPN",
+  
+  "datePublished": "2019-10-12T00:00:00Z",
+  "dateModified": "2019-10-12T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Xin LAI"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xin LAI",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://x-lai.github.io/img/icon-512.png"
+    }
+  },
+  "description": "Feature Pyramid Networks for Object Detection feature pyramids对于识别不同scale的物体有着重要的作用。但是当feature map随着网络的深度由于subsampling"
 }
 </script>
 
+  
 
   
 
@@ -150,11 +184,11 @@
 
 
 
-  <title>Xin LAI</title>
+  <title>FPN | Xin LAI</title>
 
 </head>
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
 
   <aside class="search-results" id="search">
   <div class="container">
@@ -232,7 +266,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#about" data-target="#about"><span>Home</span></a>
+          <a class="nav-link " href="/#about"><span>Home</span></a>
         </li>
 
         
@@ -261,7 +295,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#posts" data-target="#posts"><span>Posts</span></a>
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
         </li>
 
         
@@ -290,7 +324,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#tags" data-target="#tags"><span>Topics</span></a>
+          <a class="nav-link " href="/#tags"><span>Topics</span></a>
         </li>
 
         
@@ -319,7 +353,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#contact" data-target="#contact"><span>Contact</span></a>
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
         </li>
 
         
@@ -375,67 +409,7 @@
 </nav>
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-<span class="js-widget-page d-none"></span>
-
-
-
-
-  
-
-
-
-
-
-
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-  
-
-  <section id="about" class="home-section wg-about   "  >
-    <div class="container">
-      
-
-
-
+  <article class="article">
 
   
 
@@ -447,261 +421,21 @@
 
 
 
-<div class="row">
-  <div class="col-12 col-lg-4">
-    <div id="profile">
 
-      
-      
-      <img class="portrait" src="/authors/admin/avatar_huc1427b3dbbf635ca43eeb36be93c81a0_715777_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
-      
 
-      <div class="portrait-title">
-        <h2>Xin LAI</h2>
-        <h3>Fourth-year Undergraduate</h3>
 
-        
-        <h3>
-          
-          <span>Harbin Institute of Technology</span>
-          
-        </h3>
-        
-      </div>
+  
 
-      <ul class="network-icon" aria-hidden="true">
-        
-        
-        
-        
-          
-        
-        
-        
-        
-        
-        <li>
-          <a href="mailto:laixin1998@outlook.com" >
-            <i class="fas fa-envelope big-icon"></i>
-          </a>
-        </li>
-        
-        
-        
-        
-          
-        
-        
-        
-        
-        
-          
-        
-        <li>
-          <a href="/img/wechat.jpg" >
-            <i class="fab fa-weixin big-icon"></i>
-          </a>
-        </li>
-        
-        
-        
-        
-          
-        
-        
-        
-        
-        
-          
-        
-        <li>
-          <a href="https://github.com/X-Lai" target="_blank" rel="noopener">
-            <i class="fab fa-github big-icon"></i>
-          </a>
-        </li>
-        
-      </ul>
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>FPN</h1>
 
-    </div>
-  </div>
-  <div class="col-12 col-lg-8">
+  
 
+  
     
-    <h1>Biography</h1>
-
-    <p>Currently, I am a fourth-year undergraduate student, majoring in Computer Science and Technology in Harbin Institute of Technology(HIT). Before that, I was an exchange student in Computer Science Department of the University of Hong Kong(HKU).<br />
-I am interested in Computer Vision and Deep Learning. And I will pursue my Ph.D in the Chinese University of Hong Kong (CUHK) starting in 2020.</p>
-
-
-    <div class="row">
-
-      
-      <div class="col-md-5">
-        <h3>Interests</h3>
-        <ul class="ul-interests">
-          
-          <li>Artificial Intelligence</li>
-          
-          <li>Computer Vision</li>
-          
-          <li>Deep Learning</li>
-          
-        </ul>
-      </div>
-      
-
-      
-      <div class="col-md-7">
-        <h3>Education</h3>
-        <ul class="ul-edu fa-ul">
-          
-          <li>
-            <i class="fa-li fas fa-graduation-cap"></i>
-            <div class="description">
-              <p class="course">BEng. in Computer Science, Aug. 2016 - Jul. 2020 (expected)</p>
-              <p class="institution">Harbin Institute of Technology</p>
-            </div>
-          </li>
-          
-          <li>
-            <i class="fa-li fas fa-graduation-cap"></i>
-            <div class="description">
-              <p class="course">Exchange Student in Computer Science, Aug. 2018 - Jan. 2019</p>
-              <p class="institution">The University of Hong Kong</p>
-            </div>
-          </li>
-          
-        </ul>
-      </div>
-      
-
-    </div>
-  </div>
-</div>
-
-    </div>
-  </section>
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-  
-
-  <section id="posts" class="home-section wg-pages   "  >
-    <div class="container">
-      
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-<div class="row">
-  <div class="col-12 col-lg-4 section-heading">
-    <h1>Recent Posts</h1>
-    
-  </div>
-  <div class="col-12 col-lg-8">
-
-    
-
-    
-      
-        
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/fpn/" >FPN</a>
-    </h3>
-
-    
-    <div class="article-style">
-      Feature Pyramid Networks for Object Detection feature pyramids对于识别不同scale的物体有着重要的作用。但是当feature map随着网络的深度由于subsampling
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
 
 
 
@@ -737,25 +471,99 @@ I am interested in Computer Vision and Deep Learning. And I will pursue my Ph.D 
   
 
   
-
-</div>
-
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
       
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
       
-    
       
         
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://x-lai.github.io/post/fpn/&amp;text=FPN" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://x-lai.github.io/post/fpn/&amp;t=FPN" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=FPN&amp;body=https://x-lai.github.io/post/fpn/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://x-lai.github.io/post/fpn/&amp;title=FPN" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=FPN%20https://x-lai.github.io/post/fpn/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://x-lai.github.io/post/fpn/&amp;title=FPN" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    
+
+
 
 
 
@@ -769,85 +577,54 @@ I am interested in Computer Vision and Deep Learning. And I will pursue my Ph.D 
 
 
   
+</div>
 
 
-<div class="media stream-item">
-  <div class="media-body">
 
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/retinanet/" >RetinaNet</a>
-    </h3>
+  <div class="article-container">
 
-    
     <div class="article-style">
-      Focal Loss for Dense Object Detection one-stage的检测器比two-stage的更快更简单，但是在准确度上落后。本文发现最主要的原因在于极度的foregroun
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
       
 
-      
-        
+<h1 id="feature-pyramid-networks-for-object-detection">Feature Pyramid Networks for Object Detection</h1>
 
+<p>feature pyramids对于识别不同scale的物体有着重要的作用。但是当feature map随着网络的深度由于subsampling(pooling)的操作而变得越来越小时，虽然构建了feature pyramids，但是深度较浅的feature map尽管resolution更大，但low-level信息比较多而且semantics较少（low-level信息多是不利的，semantics少也是不利的），而深度较深的feature map尽管low-level信息较少semantics较多，但resolution很小（这不适于预测小物体），所以造成这种feature pyramids效果的瓶颈。本文提出通过一个带有lateral connections的top-down网络结构，用于构建既有fine resolution又富含semantics的feature maps（即每个level的feature map都是富含semantics的）。</p>
 
+<h2 id="feature-pyramid-networks">Feature Pyramid Networks</h2>
 
-<div class="article-metadata">
+<p>整个网络结构包含两部分:1) Bottom-up pathway, 2) Top-down pathway and lateral connections</p>
 
-  
-  
+<h3 id="bottom-up-pathway">Bottom-up pathway</h3>
 
-  
-  <span class="article-date">
-    
-    
-      
-    
-    2019-10-10
-  </span>
-  
+<p>这是feature pyramids的自底至上的subsampling的过程。每个scale不止一层，而是多个卷积层。并且将一个scale对应的多个层（称为stage）的最后一层的输出作为该scale的代表。每个scale的scaling step是2，也即相邻scale的feature map的size之比为2。</p>
 
-  
+<h3 id="top-down-pathway-and-lateral-connections">Top-down pathway and lateral connections</h3>
 
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    4 min read
-  </span>
-  
+<p>Top-down pathway是将coarse-resolution的feature map逐级地upsampling得到higher resolution的过程。这种upsampling在本文中直接使用nearest neighbor upsampling。在upsampling（upsampling factor=2）的同时，还会结合（element-wise addition操作）一个来自于bottom-up pathway的pyramids中相同size的feature map的lateral connection（需要将这个来自bottom-up的feature map进行$1 \times 1$的卷积以便改变channel dimensions）。upsampling的结果虽然resolution更加fine了，semantics也很多，但是由于upsampling的随机性，又是less accurately localized。而来自于bottom-up的feature map却恰恰相反，虽然更加accurately localized，但是semantics更少。所以将他们结合起来，会得到既accurately localized又semantically strong的feature map。</p>
 
-  
-  
-  
+<h2 id="feature-pyramid-networks-for-rpn">Feature Pyramid Networks for RPN</h2>
 
-  
-  
+<p>对于使用FPN的RPN，本文设计将所有anchor分散到不同scale的feature map上，以便feature pyramids上的每个scale都有自己的分工。并且对不同的scale的feature map，RPN的head参数都是共享的。实验表明，当不共享head参数时，准确度是相似的。这也说明FPN产生的不同level的feature maps有similar semantic levels。</p>
 
-  
-
-</div>
-
-      
     </div>
 
     
 
-  </div>
-  <div class="ml-3">
+
+
+
     
-    
-  </div>
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/object-detection/">object detection</a>
+  
 </div>
 
-      
+
+
     
       
-        
-
-
-
-
 
 
 
@@ -859,274 +636,121 @@ I am interested in Computer Vision and Deep Learning. And I will pursue my Ph.D 
   
 
 
-<div class="media stream-item">
-  <div class="media-body">
 
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/ssd/" >SSD</a>
-    </h3>
 
+
+
+  
+  
+  
     
-    <div class="article-style">
-      SSD: Single Shot MultiBox Detector 和YOLO一样，SSD也是一种one-stage的object detector。SSD将prediction bounding boxes的输出空间
-    </div>
+  
+  
+  <div class="media author-card">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_huc1427b3dbbf635ca43eeb36be93c81a0_715777_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
     
 
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
-
-
-
-<div class="article-metadata">
-
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://x-lai.github.io/">Xin LAI</a></h5>
+      <h6 class="card-subtitle">Fourth-year Undergraduate</h6>
+      <p class="card-text">My research interests include object detection, image debluring.</p>
+      <ul class="network-icon" aria-hidden="true">
   
-  
-
-  
-  <span class="article-date">
+    
     
     
       
     
-    2019-09-12
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    4 min read
-  </span>
-  
-
-  
-  
-  
-
-  
-  
-
-  
-
-</div>
-
-      
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
     
     
-  </div>
-</div>
-
-      
     
-
     
-    <div class="see-all">
-      <a href="/post/">
-        See all posts
-        <i class="fas fa-angle-right"></i>
+    <li>
+      <a href="mailto:laixin1998@outlook.com" >
+        <i class="fas fa-envelope"></i>
       </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/img/wechat.jpg" >
+        <i class="fab fa-weixin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/X-Lai" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
     </div>
-    
-
   </div>
-</div>
-
-    </div>
-  </section>
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-  
-
-  <section id="tags" class="home-section wg-tag-cloud   "  >
-    <div class="container">
-      
 
 
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-<div class="row">
-  <div class="col-12 col-lg-4 section-heading">
-    <h1>Popular Topics</h1>
-    
-  </div>
-  <div class="col-12 col-lg-8">
-    
-
-    
 
       
       
-      
-      
-      
-
-      <div class="tag-cloud">
-        
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
           
+          <li><a href="/post/retinanet/">RetinaNet</a></li>
           
+          <li><a href="/post/ssd/">SSD</a></li>
           
-          <a href="/tags/object-detection/" style="font-size:0.7rem">object detection</a>
-        
+          <li><a href="/post/yolo-v2/">YOLO v2</a></li>
+          
+          <li><a href="/post/yolo-v1/">YOLO v1</a></li>
+          
+          <li><a href="/post/faster-rcnn/">Faster R-CNN</a></li>
+          
+        </ul>
       </div>
+      
     
+
+    
+
+    
+<section id="comments">
+  
+    <div id="commento"></div>
+<script src="https://cdn.commento.io/js/commento.js" defer></script>
+
+  
+</section>
+
+
 
   </div>
-</div>
-
-    </div>
-  </section>
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-  
-
-  <section id="contact" class="home-section wg-contact   "  >
-    <div class="container">
-      
-
-
-
-
-
-<div class="row contact-widget">
-  <div class="col-12 col-lg-4 section-heading">
-    <h1>Contact</h1>
-    
-  </div>
-  <div class="col-12 col-lg-8">
-    
-
-    
-
-    <ul class="fa-ul">
-
-      
-      <li>
-        <i class="fa-li fas fa-envelope fa-2x" aria-hidden="true"></i>
-        <span id="person-email"><a href="mailto:laixin1998@outlook.com">laixin1998@outlook.com</a></span>
-      </li>
-      
-
-      
-      <li>
-        <i class="fa-li fas fa-phone fa-2x" aria-hidden="true"></i>
-        <span id="person-telephone"><a href="tel:&#43;86%20188-4604-4208">&#43;86 188-4604-4208</a></span>
-      </li>
-      
-
-      
-      
-        
-        
-        
-        
-        
-        
-        
-        <li>
-          <i class="fa-li fas fa-map-marker fa-2x" aria-hidden="true"></i>
-          <span id="person-address">No.92 Xidazhi Street, Harbin, Heilongjiang Province, 150001, China</span>
-        </li>
-      
-
-      
-
-      
-
-      
-
-      
-      
-
-    </ul>
-
-    
-
-  </div>
-</div>
-
-    </div>
-  </section>
-
-
+</article>
 
       
 
