@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="Fourth-year Undergraduate">
+  <meta name="description" content="U-Net: Convolutional Networks for Biomedical Image Segmentation 现在训练一个深度网络需要很多已标注的训练样本。本文提出一种网络结构以及训练技巧，并大大依靠data augmentation，使">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://x-lai.github.io/">
+  <link rel="alternate" hreflang="en-us" href="https://x-lai.github.io/post/u-net/">
 
   
 
@@ -94,14 +94,12 @@
 
 
   
-  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Xin LAI">
-  
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon-32.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://x-lai.github.io/">
+  <link rel="canonical" href="https://x-lai.github.io/post/u-net/">
 
   
   
@@ -114,29 +112,65 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="Xin LAI">
-  <meta property="og:url" content="https://x-lai.github.io/">
-  <meta property="og:title" content="Xin LAI">
-  <meta property="og:description" content="Fourth-year Undergraduate"><meta property="og:image" content="https://x-lai.github.io/img/icon-192.png">
+  <meta property="og:url" content="https://x-lai.github.io/post/u-net/">
+  <meta property="og:title" content="U-Net | Xin LAI">
+  <meta property="og:description" content="U-Net: Convolutional Networks for Biomedical Image Segmentation 现在训练一个深度网络需要很多已标注的训练样本。本文提出一种网络结构以及训练技巧，并大大依靠data augmentation，使"><meta property="og:image" content="https://x-lai.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://x-lai.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2019-10-17T00:00:00&#43;00:00">
+    
+      <meta property="article:published_time" content="2019-10-17T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2019-10-17T00:00:00&#43;00:00">
   
 
   
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://x-lai.github.io/?q={search_term_string}",
-    "query-input": "required name=search_term_string"
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://x-lai.github.io/post/u-net/"
   },
-  "url": "https://x-lai.github.io/"
+  "headline": "U-Net",
+  
+  "datePublished": "2019-10-17T00:00:00Z",
+  "dateModified": "2019-10-17T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Xin LAI"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xin LAI",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://x-lai.github.io/img/icon-512.png"
+    }
+  },
+  "description": "U-Net: Convolutional Networks for Biomedical Image Segmentation 现在训练一个深度网络需要很多已标注的训练样本。本文提出一种网络结构以及训练技巧，并大大依靠data augmentation，使"
 }
 </script>
 
+  
 
   
 
@@ -150,11 +184,11 @@
 
 
 
-  <title>Xin LAI</title>
+  <title>U-Net | Xin LAI</title>
 
 </head>
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
 
   <aside class="search-results" id="search">
   <div class="container">
@@ -232,7 +266,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#about" data-target="#about"><span>Home</span></a>
+          <a class="nav-link " href="/#about"><span>Home</span></a>
         </li>
 
         
@@ -261,7 +295,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#posts" data-target="#posts"><span>Posts</span></a>
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
         </li>
 
         
@@ -290,7 +324,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#tags" data-target="#tags"><span>Topics</span></a>
+          <a class="nav-link " href="/#tags"><span>Topics</span></a>
         </li>
 
         
@@ -319,7 +353,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#contact" data-target="#contact"><span>Contact</span></a>
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
         </li>
 
         
@@ -375,67 +409,7 @@
 </nav>
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-<span class="js-widget-page d-none"></span>
-
-
-
-
-  
-
-
-
-
-
-
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-  
-
-  <section id="about" class="home-section wg-about   "  >
-    <div class="container">
-      
-
-
-
+  <article class="article">
 
   
 
@@ -447,261 +421,21 @@
 
 
 
-<div class="row">
-  <div class="col-12 col-lg-4">
-    <div id="profile">
 
-      
-      
-      <img class="portrait" src="/authors/admin/avatar_huc1427b3dbbf635ca43eeb36be93c81a0_715777_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
-      
 
-      <div class="portrait-title">
-        <h2>Xin LAI</h2>
-        <h3>Fourth-year Undergraduate</h3>
 
-        
-        <h3>
-          
-          <span>Harbin Institute of Technology</span>
-          
-        </h3>
-        
-      </div>
+  
 
-      <ul class="network-icon" aria-hidden="true">
-        
-        
-        
-        
-          
-        
-        
-        
-        
-        
-        <li>
-          <a href="mailto:laixin1998@outlook.com" >
-            <i class="fas fa-envelope big-icon"></i>
-          </a>
-        </li>
-        
-        
-        
-        
-          
-        
-        
-        
-        
-        
-          
-        
-        <li>
-          <a href="/img/wechat.jpg" >
-            <i class="fab fa-weixin big-icon"></i>
-          </a>
-        </li>
-        
-        
-        
-        
-          
-        
-        
-        
-        
-        
-          
-        
-        <li>
-          <a href="https://github.com/X-Lai" target="_blank" rel="noopener">
-            <i class="fab fa-github big-icon"></i>
-          </a>
-        </li>
-        
-      </ul>
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>U-Net</h1>
 
-    </div>
-  </div>
-  <div class="col-12 col-lg-8">
+  
 
+  
     
-    <h1>Biography</h1>
-
-    <p>Currently, I am a fourth-year undergraduate student, majoring in Computer Science and Technology in Harbin Institute of Technology(HIT). Before that, I was an exchange student in Computer Science Department of the University of Hong Kong(HKU).<br />
-I am interested in Computer Vision and Deep Learning. And I will pursue my Ph.D in the Chinese University of Hong Kong (CUHK) starting in 2020.</p>
-
-
-    <div class="row">
-
-      
-      <div class="col-md-5">
-        <h3>Interests</h3>
-        <ul class="ul-interests">
-          
-          <li>Artificial Intelligence</li>
-          
-          <li>Computer Vision</li>
-          
-          <li>Deep Learning</li>
-          
-        </ul>
-      </div>
-      
-
-      
-      <div class="col-md-7">
-        <h3>Education</h3>
-        <ul class="ul-edu fa-ul">
-          
-          <li>
-            <i class="fa-li fas fa-graduation-cap"></i>
-            <div class="description">
-              <p class="course">BEng. in Computer Science, Aug. 2016 - Jul. 2020 (expected)</p>
-              <p class="institution">Harbin Institute of Technology</p>
-            </div>
-          </li>
-          
-          <li>
-            <i class="fa-li fas fa-graduation-cap"></i>
-            <div class="description">
-              <p class="course">Exchange Student in Computer Science, Aug. 2018 - Jan. 2019</p>
-              <p class="institution">The University of Hong Kong</p>
-            </div>
-          </li>
-          
-        </ul>
-      </div>
-      
-
-    </div>
-  </div>
-</div>
-
-    </div>
-  </section>
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-  
-
-  <section id="posts" class="home-section wg-pages   "  >
-    <div class="container">
-      
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-<div class="row">
-  <div class="col-12 col-lg-4 section-heading">
-    <h1>Recent Posts</h1>
-    
-  </div>
-  <div class="col-12 col-lg-8">
-
-    
-
-    
-      
-        
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/u-net/" >U-Net</a>
-    </h3>
-
-    
-    <div class="article-style">
-      U-Net: Convolutional Networks for Biomedical Image Segmentation 现在训练一个深度网络需要很多已标注的训练样本。本文提出一种网络结构以及训练技巧，并大大依靠data augmentation，使
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
 
 
 
@@ -737,25 +471,99 @@ I am interested in Computer Vision and Deep Learning. And I will pursue my Ph.D 
   
 
   
-
-</div>
-
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
       
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
       
-    
       
         
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://x-lai.github.io/post/u-net/&amp;text=U-Net" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://x-lai.github.io/post/u-net/&amp;t=U-Net" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=U-Net&amp;body=https://x-lai.github.io/post/u-net/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://x-lai.github.io/post/u-net/&amp;title=U-Net" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=U-Net%20https://x-lai.github.io/post/u-net/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://x-lai.github.io/post/u-net/&amp;title=U-Net" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    
+
+
 
 
 
@@ -769,85 +577,58 @@ I am interested in Computer Vision and Deep Learning. And I will pursue my Ph.D 
 
 
   
+</div>
 
 
-<div class="media stream-item">
-  <div class="media-body">
 
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/fpn/" >FPN</a>
-    </h3>
+  <div class="article-container">
 
-    
     <div class="article-style">
-      Feature Pyramid Networks for Object Detection feature pyramids对于识别不同scale的物体有着重要的作用。但是当feature map随着网络的深度由于subsampling
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
       
 
-      
-        
+<h1 id="u-net-convolutional-networks-for-biomedical-image-segmentation">U-Net: Convolutional Networks for Biomedical Image Segmentation</h1>
 
+<p>现在训练一个深度网络需要很多已标注的训练样本。本文提出一种网络结构以及训练技巧，并大大依靠data augmentation，使用有限的标注样本高效训练。该网络结构包括一个用来捕捉context的contracting path，以及一个对称的用来准确定位的expanding path。实验表明用很少的数据就能end-to-end训练出一个效果很好的网络。</p>
 
+<h2 id="architecture">Architecture</h2>
 
-<div class="article-metadata">
+<p>本文以FCN为基础，对contracting path进行补充，添加了一个expanding path，并且为了精确定位，和来自contracting path的高分辨feature map结合起来形成upsampled output。（为什么要先contract在expand？借助了auto-encoder的思想，中间将特征维度降低，是为了将有用的特征聚集起来，并且排除一些噪声或者low-level的信息。）</p>
 
-  
-  
+<h2 id="overlap-tile-strategy">Overlap-tile Strategy</h2>
 
-  
-  <span class="article-date">
-    
-    
-      
-    
-    2019-10-12
-  </span>
-  
+<p>U-Net使用的卷积操作的pad=0，所以每次卷积完之后，会使得feature map的size减少2。所以最终经过contracting path和expanding path之后输出的feature map会比输入图像的size少很多。所以需要将输入的最原始的图像的size扩大，使得最终输出的feature map和最原始的图像size相同。那么如何扩大输入的图像呢？本文提出通过将最原始图像的边缘做一个镜像操作来扩大它的size。</p>
 
-  
+<h2 id="data-augmentation">Data augmentation</h2>
 
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    3 min read
-  </span>
-  
+<p>除了overlap-tile strategy，本文还提出对有限的图像使用elastic deformation，进而达到data augmentation的目的。通过$3\times 3$的grid使用random displacement得到smooth deformation。因为本文的背景是细胞的分割，所以使用elastic deformation是合理的，而且还能使得网络学到一种对这种deformation的invariance。此外，shift和rotation以及gray value invariance都可以通过类似的augmentation方法学到。</p>
 
-  
-  
-  
+<h2 id="training">Training</h2>
 
-  
-  
+<p>实质上，分割任务就是对每个像素都进行分类，所以最终的输出为$K$个feature maps。同时，为了处理touching objects（同类objects叠在一起）的边界处，最终损失函数还需要对这种边界处的像素提高权重。所以最终损失函数（也叫energy function）为：$E=\sum_{x\in \Omega}{w(x)log(p_{l(x)}(x))}$ 。其中$l(x)$表示像素x的真实label。$p_k(x)$表示像素x在第$k$类的概率值。</p>
 
-  
+<p>其中weight map $w(x)$通过以下公式计算:$$w(x)=w_c(x)+w_0\cdot exp(-\frac{(d_1(x)+d_2(x))^2}{2\sigma^2})$$</p>
 
-</div>
+<p>其中$w_c$用于平衡class frequencies。$d_1(x)$表示像素x到最近细胞的边界的距离，$d_2(x)$表示像素x到第二近的细胞的边界的距离。在实验中，设置$w_0=10,\sigma=5$。</p>
 
-      
     </div>
 
     
 
-  </div>
-  <div class="ml-3">
+
+
+
     
-    
-  </div>
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/semantic-segmentation/">semantic segmentation</a>
+  
 </div>
 
-      
+
+
     
       
-        
-
-
-
-
 
 
 
@@ -859,279 +640,103 @@ I am interested in Computer Vision and Deep Learning. And I will pursue my Ph.D 
   
 
 
-<div class="media stream-item">
-  <div class="media-body">
 
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/retinanet/" >RetinaNet</a>
-    </h3>
 
+
+
+  
+  
+  
     
-    <div class="article-style">
-      Focal Loss for Dense Object Detection one-stage的检测器比two-stage的更快更简单，但是在准确度上落后。本文发现最主要的原因在于极度的foregroun
-    </div>
+  
+  
+  <div class="media author-card">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_huc1427b3dbbf635ca43eeb36be93c81a0_715777_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
     
 
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
-
-
-
-<div class="article-metadata">
-
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://x-lai.github.io/">Xin LAI</a></h5>
+      <h6 class="card-subtitle">Fourth-year Undergraduate</h6>
+      <p class="card-text">My research interests include object detection, image debluring.</p>
+      <ul class="network-icon" aria-hidden="true">
   
-  
-
-  
-  <span class="article-date">
+    
     
     
       
     
-    2019-10-10
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    4 min read
-  </span>
-  
-
-  
-  
-  
-
-  
-  
-
-  
-
-</div>
-
-      
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
     
     
-  </div>
-</div>
-
-      
     
-
     
-    <div class="see-all">
-      <a href="/post/">
-        See all posts
-        <i class="fas fa-angle-right"></i>
+    <li>
+      <a href="mailto:laixin1998@outlook.com" >
+        <i class="fas fa-envelope"></i>
       </a>
-    </div>
+    </li>
+  
     
-
-  </div>
-</div>
-
-    </div>
-  </section>
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-  
-
-  <section id="tags" class="home-section wg-tag-cloud   "  >
-    <div class="container">
-      
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-<div class="row">
-  <div class="col-12 col-lg-4 section-heading">
-    <h1>Popular Topics</h1>
     
-  </div>
-  <div class="col-12 col-lg-8">
     
-
+      
     
-
-      
-      
-      
-      
-      
-
-      <div class="tag-cloud">
-        
-          
-          
-          
-          <a href="/tags/object-detection/" style="font-size:4.820902501875007rem">object detection</a>
-        
-          
-          
-          
-          <a href="/tags/semantic-segmentation/" style="font-size:0.7rem">semantic segmentation</a>
-        
-      </div>
     
-
-  </div>
-</div>
+    
+    
+    
+      
+    
+    <li>
+      <a href="/img/wechat.jpg" >
+        <i class="fab fa-weixin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/X-Lai" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
 
     </div>
-  </section>
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-  
-
-  <section id="contact" class="home-section wg-contact   "  >
-    <div class="container">
-      
-
-
-
-
-
-<div class="row contact-widget">
-  <div class="col-12 col-lg-4 section-heading">
-    <h1>Contact</h1>
-    
   </div>
-  <div class="col-12 col-lg-8">
+
+
+
+      
+      
     
 
     
 
-    <ul class="fa-ul">
-
-      
-      <li>
-        <i class="fa-li fas fa-envelope fa-2x" aria-hidden="true"></i>
-        <span id="person-email"><a href="mailto:laixin1998@outlook.com">laixin1998@outlook.com</a></span>
-      </li>
-      
-
-      
-      <li>
-        <i class="fa-li fas fa-phone fa-2x" aria-hidden="true"></i>
-        <span id="person-telephone"><a href="tel:&#43;86%20188-4604-4208">&#43;86 188-4604-4208</a></span>
-      </li>
-      
-
-      
-      
-        
-        
-        
-        
-        
-        
-        
-        <li>
-          <i class="fa-li fas fa-map-marker fa-2x" aria-hidden="true"></i>
-          <span id="person-address">No.92 Xidazhi Street, Harbin, Heilongjiang Province, 150001, China</span>
-        </li>
-      
-
-      
-
-      
-
-      
-
-      
-      
-
-    </ul>
-
     
+<section id="comments">
+  
+    <div id="commento"></div>
+<script src="https://cdn.commento.io/js/commento.js" defer></script>
+
+  
+</section>
+
+
 
   </div>
-</div>
-
-    </div>
-  </section>
-
-
+</article>
 
       
 
