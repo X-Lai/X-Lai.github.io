@@ -602,11 +602,11 @@
 
 <p>将每个RoI矩形划分成$k \times k$个bins。对于一个形如$w\times h$的矩形，每个bin的大小约等于$\frac{w}{k}\times \frac{h}{k}$。在第$(i,j)$个bin$(0\le i,j \le k-1)$中，定义position-sensitive RoI pooling如下：</p>
 
-<p>$r<em>c(i,j|\Theta)=\sum</em>{(x,y)\in bin(i,j)}{z_{i,j,c}(x+x_0,y+y_0|\Theta)}/n$</p>
+<p>$r_c(i,j|\Theta)=\sum_{(x,y)\in bin(i,j)}{z_{i,j,c}(x+x_0,y+y_0|\Theta)}/n$</p>
 
-<p>其中$r<em>c(i,j)$表示pooling的结果中对第c类的第$(i,j)$个bin的值，$z</em>{i,j,c}$表示那$k^2(C+1)$个score maps中第c类第$(i,j)$个bin对应的那个，$(x_0,y_0)$表示RoI的左上角在score map上的坐标。本文采用的是average pooling，所以除以n，当然也可以用max pooling。</p>
+<p>其中$r_c(i,j)$表示pooling的结果中对第c类的第$(i,j)$个bin的值，$z_{i,j,c}$表示那$k^2(C+1)$个score maps中第c类第$(i,j)$个bin对应的那个，$(x_0,y_0)$表示RoI的左上角在score map上的坐标。本文采用的是average pooling，所以除以n，当然也可以用max pooling。</p>
 
-<p>最后，对pooling得到的C+1个channel分别做average voting。即$r<em>c(\Theta)=\sum</em>{i,j}{r_c(i,j|\Theta)}$。</p>
+<p>最后，对pooling得到的C+1个channel分别做average voting。即$r_c(\Theta)=\sum_{i,j}{r_c(i,j|\Theta)}$。</p>
 
 <p>同样的，除了上述$k^2(C+1)$维的卷积层，还有一个$4k^2$的卷积层和它平行，用于预测坐标。positive-sensitive RoI pooling作用在这$4k^2$个channel上，得到4个大小为$k^2$的channel，最终通过average voting得到4维向量即$(t_x, t_y, t_w, t_h)$。</p>
 
