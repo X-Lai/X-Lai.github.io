@@ -5,12 +5,45 @@
     <link>https://x-lai.github.io/</link>
       <atom:link href="https://x-lai.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Xin LAI</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 17 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 23 Oct 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://x-lai.github.io/img/icon-192.png</url>
       <title>Xin LAI</title>
       <link>https://x-lai.github.io/</link>
     </image>
+    
+    <item>
+      <title>R-FCN</title>
+      <link>https://x-lai.github.io/post/r-fcn/</link>
+      <pubDate>Wed, 23 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>https://x-lai.github.io/post/r-fcn/</guid>
+      <description>
+
+&lt;h1 id=&#34;r-fcn-object-detection-via-region-based-fully-convolutional-networks&#34;&gt;R-FCN: Object Detection via Region-based Fully Convolutional Networks&lt;/h1&gt;
+
+&lt;p&gt;Faster R-CNN之所以比较慢，是因为RPN输出的每个proposal都需要经过detection network。本文提出position-sensitive score maps使得RPN输出的所有的proposal共享计算，从而提高效率。&lt;/p&gt;
+
+&lt;p&gt;Fast R-CNN或Faster R-CNN能够具有很强的translation variance的能力，主要在于RoI pooling对信息的整合，并形成一个fixed-size的而且携带位置信息(因为RoI pooling layer将feature map spatially分成若干块)的向量。但这样是以unshared per-RoI computation为代价的。（原文说得更加透彻：This region-specific operation(指RoI pooling) breaks down translation invariance, and the post-RoI convolutional layers are no longer translation-invariant when evaluated across different regions.）&lt;/p&gt;
+
+&lt;h2 id=&#34;architecture&#34;&gt;Architecture&lt;/h2&gt;
+
+&lt;p&gt;R-FCN的所有learnable weight layers都是convolutional的，并且是在entire image中计算的。最后一个卷积层对每一类都产生$k^2$个position-sensitive score maps，所以输出层有$k^2(C+1)$个channel（+1是为了预测出background）。$k^2$是对应了每个RoI都被切割成$k^2$块分别给对应的位置。&lt;/p&gt;
+
+&lt;p&gt;R-FCN以position-sensitive RoI pooling layer结束。对每个RoI，position-sensitive RoI pooling layer将最后一个卷积层的输出聚集起来，并且打分。每个RoI经过这个pooling layer之后都会得到$C+1$个channel，并且每个channel都是$k\times k$的。每个channel都对应着一个类。而且对每个channel，这$k\times k$个bin中的每一个都只来自于R-FCN输出的$k^2$个position-sensitive score maps中的一个。&lt;/p&gt;
+
+&lt;h2 id=&#34;position-sensitive-score-maps-position-sensitive-roi-pooling&#34;&gt;Position-sensitive score maps &amp;amp; Position-sensitive RoI pooling&lt;/h2&gt;
+
+&lt;p&gt;将每个RoI矩形划分成$k \times k$个bins。对于一个形如$w\times h$的矩形，每个bin的大小约等于$\frac{w}{k}\times \frac{h}{k}$。在第$(i,j)$个bin$(0\le i,j \le k-1)$中，定义position-sensitive RoI pooling如下：&lt;/p&gt;
+
+&lt;p&gt;$r&lt;em&gt;c(i,j|\Theta)=\sum&lt;/em&gt;{(x,y)\in bin(i,j)}{z_{i,j,c}(x+x_0,y+y_0|\Theta)}/n$&lt;/p&gt;
+
+&lt;p&gt;其中$r&lt;em&gt;c(i,j)$表示pooling的结果中对第c类的第$(i,j)$个bin的值，$z&lt;/em&gt;{i,j,c}$表示那$k^2(C+1)$个score maps中第c类第$(i,j)$个bin对应的那个，$(x_0,y_0)$表示RoI的左上角在score map上的坐标。本文采用的是average pooling，所以除以n，当然也可以用max pooling。&lt;/p&gt;
+
+&lt;p&gt;最后，对pooling得到的C+1个channel分别做average voting。即$r&lt;em&gt;c(\Theta)=\sum&lt;/em&gt;{i,j}{r_c(i,j|\Theta)}$。&lt;/p&gt;
+
+&lt;p&gt;同样的，除了上述$k^2(C+1)$维的卷积层，还有一个$4k^2$的卷积层和它平行，用于预测坐标。positive-sensitive RoI pooling作用在这$4k^2$个channel上，得到4个大小为$k^2$的channel，最终通过average voting得到4维向量即$(t_x, t_y, t_w, t_h)$。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>U-Net</title>
