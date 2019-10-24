@@ -612,7 +612,7 @@
 
 <p>另外一种将coarse output转向dense pixels的方法是插值（interpolation）。例如，simple bilinear interpolation从输入map的每相邻4个输入来计算对应的输出$y_{ij}$。</p>
 
-<p>$y_{ij}=\sum_{\alpha,\beta=0}^{1}|1-\alpha-{i/f}||1-\beta-{j/f}|x_{\lfloor i/f\rfloor+\alpha,\lfloor j/f \rfloor +\beta}$</p>
+<p>$y_{ij}=\sum_{\alpha,\beta=0}^{1}|1-\alpha-\{i/f\}||1-\beta-\{j/f\}|x_{\lfloor i/f\rfloor+\alpha,\lfloor j/f \rfloor +\beta}$</p>
 
 <p>其中{}表示小数部分，f是upsampling factor。</p>
 
