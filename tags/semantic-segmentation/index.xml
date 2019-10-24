@@ -5,12 +5,79 @@
     <link>https://x-lai.github.io/tags/semantic-segmentation/</link>
       <atom:link href="https://x-lai.github.io/tags/semantic-segmentation/index.xml" rel="self" type="application/rss+xml" />
     <description>semantic segmentation</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 17 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 24 Oct 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://x-lai.github.io/img/icon-192.png</url>
       <title>semantic segmentation</title>
       <link>https://x-lai.github.io/tags/semantic-segmentation/</link>
     </image>
+    
+    <item>
+      <title>FCN</title>
+      <link>https://x-lai.github.io/post/fcn/</link>
+      <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>https://x-lai.github.io/post/fcn/</guid>
+      <description>
+
+&lt;h1 id=&#34;fully-convolutional-network-for-semantic-segmentation&#34;&gt;Fully Convolutional Network for Semantic Segmentation&lt;/h1&gt;
+
+&lt;p&gt;本文提出FCN，这是第一个对pixelwise prediction端到端训练FCN的工作。training和inference都是通过dense feedforward computation和backpropagation从而达到whole-image-at-a-time的。&lt;/p&gt;
+
+&lt;h2 id=&#34;adapting-classifiers-for-dense-prediction&#34;&gt;Adapting classifiers for dense prediction&lt;/h2&gt;
+
+&lt;p&gt;将classification network的fc层解释为卷积层，只不过卷积核的大小和输入feature map的大小一致。这样重新解释使得原fc层的输出也具有一种spatial信息，只不过每个channel都是$1\times 1$的。另外，classification network的subsampling会使得输出变得更加coarse。&lt;/p&gt;
+
+&lt;h2 id=&#34;几种upsampling的方法&#34;&gt;几种upsampling的方法&lt;/h2&gt;
+
+&lt;h3 id=&#34;shift-and-stitch-is-filter-dilation&#34;&gt;Shift-and-stitch is filter dilation&lt;/h3&gt;
+
+&lt;p&gt;Shift-and-stitch是一种用于解决下采样导致的resolution降低的问题。假设下采样的factor是f，对于每对(x,y)（$0\le x,y \le f$），先将输入向右移动x个像素，并向下移动y个像素，这样就得到了$f^2$个新的输入了。分别对这$f^2$个输入进行处理（经过下采样，之后可能还经过卷积等处理），最终分别得到$f^2$个输出。然后再将这$f^2$个输出交错排列，形成最终输出的feature map，使得该feature map上每个像素都对应着它们的receptive field的中心。具体可参考博客&lt;a href=&#34;https://www.jianshu.com/p/e534e2be5d7d&#34; target=&#34;_blank&#34;&gt;关于FCN 论文中的 Shift-and-stitch 的详尽解释&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;这样做shift-and-stitch看上去处理了$f^2$次，降低了处理效率。但实际上有一些技巧可以避免计算$f^2$次。例如a trous。&lt;/p&gt;
+
+&lt;p&gt;其实，shift-and-stitch与卷积核放大（filter dilation）的效果是一样的。只是需要将将卷积核放大一倍的同时做以下处理：&lt;/p&gt;
+
+&lt;p&gt;$f&amp;rsquo;_{ij}=\left\{\begin{aligned} &amp;amp; f_{i/s,j/s}  &amp;amp; 如果s能整除i和j \\ &amp;amp; 0  &amp;amp; otherwise \end{aligned} \right.$&lt;/p&gt;
+
+&lt;p&gt;这样做相当于是一种带孔的卷积。深入了解可参考博客&lt;a href=&#34;https://zhuanlan.zhihu.com/p/56035377&#34; target=&#34;_blank&#34;&gt;shift-and-stitch理解&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;upsamling-is-fractionally-strided-convolution&#34;&gt;Upsamling is (fractionally strided) convolution&lt;/h3&gt;
+
+&lt;p&gt;另外一种将coarse output转向dense pixels的方法是插值（interpolation）。例如，simple bilinear interpolation从输入map的每相邻4个输入来计算对应的输出$y_{ij}$。&lt;/p&gt;
+
+&lt;p&gt;$y_{ij}=\sum_{\alpha,\beta=0}^{1}|1-\alpha-{i/f}||1-\beta-{j/f}|x_{\lfloor i/f\rfloor+\alpha,\lfloor j/f \rfloor +\beta}$&lt;/p&gt;
+
+&lt;p&gt;其中{}表示小数部分，f是upsampling factor。&lt;/p&gt;
+
+&lt;p&gt;根据这个公式，实际上这是一种stride是分数的卷积。例如，当f=2时，这就相当于stride=0.5时的卷积，比如$y_{00}=x_{00}, y_{11}=0.25(x_{00}+x_{01}+x_{10}+x_{11}),y_{12}=0.5(x_{01}+x_{11})$。&lt;/p&gt;
+
+&lt;p&gt;在本文中，这种方法称作in-network upsampling，实验证明这种方法既快又好。&lt;/p&gt;
+
+&lt;h2 id=&#34;segmentation-architecture&#34;&gt;Segmentation Architecture&lt;/h2&gt;
+
+&lt;p&gt;使用ILSVRC预训练模型，并使用in-network upsampling以及pixelwise loss来进行dense prediction。另外，还在不同层之间添加了skips来将coarse,  semantic和local, appearance information结合起来，用以提升semantics和spatical precision。使用相对较浅的层做more local prediction很自然，因为它们的receptive fields较小。&lt;/p&gt;
+
+&lt;p&gt;layer fusion实质上是elementwise operation。不同层之间点与点的对应需要resampling和padding。本文将较小scale的层通过upsampling达到与较大scale层相同，从而进行elementwise operation。&lt;/p&gt;
+
+&lt;p&gt;elementwise operation首先通过contatenation来fuse features，然后再使用$1\times 1$的convolution。&lt;/p&gt;
+
+&lt;h3 id=&#34;skip-architectures-for-segmentation&#34;&gt;Skip Architectures for Segmentation&lt;/h3&gt;
+
+&lt;p&gt;将pool3和放大两倍的pool4，以及放大四倍的conv7，做一个fusion。再将结果放大8倍的到最终的输出。其中upsampling layer的filter使用bilinear interpolation来初始化，根据in-network sampling（即fractionally strided convolution），这个filter的参数不是固定的，可以学到。&lt;/p&gt;
+
+&lt;h2 id=&#34;metrics&#34;&gt;Metrics&lt;/h2&gt;
+
+&lt;p&gt;pixel accuracy: $\sum_i n_{ii}/\sum_i t_i$&lt;/p&gt;
+
+&lt;p&gt;mean accuracy: $(1/n_{cl})\sum_i n_{ii}/t_i$&lt;/p&gt;
+
+&lt;p&gt;mean IU: $(1/n_{cl})\sum_i n_{ii}/(t_i + \sum_j n_{ji} - n_{ii})$&lt;/p&gt;
+
+&lt;p&gt;frequency weighted IU: $(\sum_k t_k)^{-1}\sum_i t_i n_{ii}/(t_i+\sum_j n_{ji}-n_{ii})$&lt;/p&gt;
+
+&lt;p&gt;其中$n_{ij}$是将真实第i类的像素预测到第j类的像素数，$n_{cl}$是种类数，$t_i=\sum_j{n_{ij}}$是真实为第i类的像素数。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>U-Net</title>
