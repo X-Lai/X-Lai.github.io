@@ -5,12 +5,59 @@
     <link>https://x-lai.github.io/</link>
       <atom:link href="https://x-lai.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Xin LAI</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 24 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 27 Oct 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://x-lai.github.io/img/icon-192.png</url>
       <title>Xin LAI</title>
       <link>https://x-lai.github.io/</link>
     </image>
+    
+    <item>
+      <title>MRCNN</title>
+      <link>https://x-lai.github.io/post/mrcnn/</link>
+      <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>https://x-lai.github.io/post/mrcnn/</guid>
+      <description>
+
+&lt;h1 id=&#34;object-detection-via-a-multi-region-semantic-segmentation-aware-cnn-model&#34;&gt;Object detection via a multi-region &amp;amp; semantic segmentation-aware CNN model&lt;/h1&gt;
+
+&lt;p&gt;本文提出一种新的CNN模型，包括了multi-region CNN model以及semantic segmentation-aware CNN model。同时还提出一种iterative localization通过不断迭代得到精确的localization regression。&lt;/p&gt;
+
+&lt;h2 id=&#34;multi-region-cnn-model&#34;&gt;Multi-Region CNN Model&lt;/h2&gt;
+
+&lt;p&gt;整体框架包括两部分:&lt;/p&gt;
+
+&lt;p&gt;1) Activation maps module: 用于从整幅输入图像中提取整体的特征图；&lt;/p&gt;
+
+&lt;p&gt;2) Region adaptation module: 用于从整体特征图中截取proposal region各个部分的特征，并使用spatially adaptive (max-) pooling，然后分别放入对应的网络中。&lt;/p&gt;
+
+&lt;p&gt;最终，candidate box representation通过将所有region adaptation module的最后一层concatenate起来得到。&lt;/p&gt;
+
+&lt;p&gt;这样做，是为了：1）强制得到各个每个RoI各个部分的表示，从而得到一个much richer and more robust object representation；2）使得最终的object representation more sensitive to inaccurate localization。&lt;/p&gt;
+
+&lt;h3 id=&#34;role-in-detection&#34;&gt;Role in detection&lt;/h3&gt;
+
+&lt;p&gt;1) Discriminative feature diversification. 使用多个区域而不是整个RoI的好处在于可以使得网络集中于某一块小区域，而非一整块区域。经过实验证明，遮住一部分而将注意力集中在一小块能使得检测准确率上升；&lt;/p&gt;
+
+&lt;p&gt;2) Localization-aware representation. 使用多区域的结构可以缓解定位不准的问题，因为使用多区域会使得检测器专注于某几小块，从而对定位更加敏感（即如果定位不准确的话，会对分类产生较大偏差）。此外，使用多区域实际上impose soft constraints regarding the visual content allowed in each type of region，这种soft constraints对定位有一定帮助。&lt;/p&gt;
+
+&lt;h2 id=&#34;semantic-segmentation-aware-cnn-model&#34;&gt;Semantic Segmentation-Aware CNN Model&lt;/h2&gt;
+
+&lt;p&gt;由于segmentation任务和detection任务相似，本文提出使用semantic segmentation任务来提取特征，用来辅助检测，而且，这种方法不需要额外的分割所需的ground truth annotated data。&lt;/p&gt;
+
+&lt;p&gt;使用FCN训练分割模型。直接将object detection的每个object对应的bounding box内的像素设置为foreground class。其余设为background class。以此获得训练数据。训练完成后，将最后一层分类层去掉，并用剩下的来提取semantic segmentation-aware features.&lt;/p&gt;
+
+&lt;h2 id=&#34;object-localization&#34;&gt;Object Localization&lt;/h2&gt;
+
+&lt;h3 id=&#34;cnn-region-adaptation-module-for-bounding-box-regression&#34;&gt;CNN region adaptation module for bounding box regression&lt;/h3&gt;
+
+&lt;p&gt;在上述模型中再额外添加一个module用来预测bounding box。对于每一类，都输出4个数。并且为了能够refine那些与真实相差较大的box，本文提出先将原region扩大1.3倍，然后再预测。&lt;/p&gt;
+
+&lt;h3 id=&#34;iterative-localization-bounding-box-voting&#34;&gt;Iterative Localization &amp;amp; Bounding Box Voting&lt;/h3&gt;
+
+&lt;p&gt;详见原文&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>FCN</title>
