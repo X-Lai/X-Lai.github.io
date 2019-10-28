@@ -89,6 +89,10 @@
 &lt;h3 id=&#34;iterative-localization-bounding-box-voting&#34;&gt;Iterative Localization &amp;amp; Bounding Box Voting&lt;/h3&gt;
 
 &lt;p&gt;详见原文&lt;/p&gt;
+
+&lt;h2 id=&#34;一些想法&#34;&gt;一些想法&lt;/h2&gt;
+
+&lt;p&gt;能否通过mask来学到不同的部位，并结合其特征，并实现end-to-end的训练？&lt;/p&gt;
 </description>
     </item>
     
