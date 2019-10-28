@@ -5,12 +5,45 @@
     <link>https://x-lai.github.io/tags/object-detection/</link>
       <atom:link href="https://x-lai.github.io/tags/object-detection/index.xml" rel="self" type="application/rss+xml" />
     <description>object detection</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 27 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 28 Oct 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://x-lai.github.io/img/icon-192.png</url>
       <title>object detection</title>
       <link>https://x-lai.github.io/tags/object-detection/</link>
     </image>
+    
+    <item>
+      <title>DenseBox</title>
+      <link>https://x-lai.github.io/post/densebox/</link>
+      <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>https://x-lai.github.io/post/densebox/</guid>
+      <description>
+
+&lt;h1 id=&#34;densebox-unifying-landmark-localization-with-end-to-end-object-detection&#34;&gt;DenseBox: Unifying Landmark Localization with End to End Object Detection&lt;/h1&gt;
+
+&lt;p&gt;DenseBox直接通过FCN框架来同时预测定位以及分类。它主要有2个方面值得学习：1）DenseBox不需要手动设置anchor，根据receptive field来设置ground-truth，通过一种类似于segmentation的方法来训练；2）通过multi-task learning加入landmarks信息，提高检测精度。&lt;/p&gt;
+
+&lt;h2 id=&#34;框架&#34;&gt;框架&lt;/h2&gt;
+
+&lt;p&gt;输入$m\times n$的image, 输出5个$\frac{m}{4} \times \frac{n}{4}$的feature maps。其中一个用来输出object confidence，其他四个用来标记bounding box。对于output feature map的每个pixel$(x_i, y_i)$，通过一个五元组来描述bounding box$(\hat{s},\hat{dx^t}=\hat{x_i}-x_t,\hat{dy^t}=\hat{y_i}-y_t,\hat{dx^b}=\hat{x_i}-x_b, \hat{dy^b}=\hat{y_i}-y_b)$。其中$\hat{s}$是object confidence，$(x_t,y_t)$是bounding box的左上角坐标，$(x_b,y_b)$是bounding box的右下角坐标。&lt;/p&gt;
+
+&lt;p&gt;如何标记ground-truth：在output feature map上，对于一个人脸的bounding box，取其长度的0.3作为半径，并以其中心为圆心，作一个圆，该圆的区域为positive，其他区域为negative。&lt;/p&gt;
+
+&lt;p&gt;为什么这样设计ground-truth？因为在该圆的区域内的每个pixel的receptive field都大致是以这个object（即人脸）为中心的。&lt;/p&gt;
+
+&lt;h2 id=&#34;multi-task-training&#34;&gt;Multi-task training&lt;/h2&gt;
+
+&lt;p&gt;没使用landmarks的情况下，其loss function为：&lt;/p&gt;
+
+&lt;p&gt;$L_{det}(\theta)=\sum_i({M(\hat{t_i})L_{cls}(\hat{t_i},y_i^*)}+\lambda_{loc}[y_i^*&amp;gt;0]L_{loc}(\hat{d_i}, d_i^*))$&lt;/p&gt;
+
+&lt;p&gt;使用landmarks之后，再添加一个分支（该分支也用上了用于detection的特征图），该分支输出N个feature  maps（其中N表示每个object有N个landmarks）。loss function变为：&lt;/p&gt;
+
+&lt;p&gt;$L_{full}(\theta)=\lambda_{det}L_{det}(\theta)+\lambda_{lm}L_{lm}(\theta)+L_{rf}(\theta)$&lt;/p&gt;
+
+&lt;p&gt;其中$L_{lm}(\theta)$表示landmark regression loss（用于回归的，与$L_{loc}$类似），$L_{rf}(\theta)$表示refined detection loss（用于分类的，与$L_{cls}$类似）。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>MRCNN</title>
