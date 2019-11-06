@@ -13,6 +13,29 @@
     </image>
     
     <item>
+      <title>Mask RCNN</title>
+      <link>https://x-lai.github.io/post/mask-rcnn/</link>
+      <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>https://x-lai.github.io/post/mask-rcnn/</guid>
+      <description>
+
+&lt;h1 id=&#34;mask-rcnn&#34;&gt;Mask RCNN&lt;/h1&gt;
+
+&lt;p&gt;Mask RCNN基于Faster RCNN，在Head处又加了一个mask branch，使得该框架能够适用于instance segmentation。这是一种instance-first的实例分割方法（另一种是segmentation-first strategy），先得到bbox，再对每个bbox进行分割。&lt;/p&gt;
+
+&lt;h2 id=&#34;roialign&#34;&gt;RoIAlign&lt;/h2&gt;
+
+&lt;p&gt;Faster RCNN的RoIPool层会有一定的quantization，造成misalignment误差，所以Mask RCNN采用了RoIAlign通过bilinear interpolation来重新采样并计算出样本subpixel的具体值再聚集（maximum或average）得到最终的输出值，这样达到了alignment的目的，也减少了误差，使得该框架适用于position sensitive的任务（localization/mask）。&lt;/p&gt;
+
+&lt;h2 id=&#34;decouple-mask-and-class-prediction&#34;&gt;Decouple mask and class prediction&lt;/h2&gt;
+
+&lt;p&gt;以往实例分割算法的做法是per-pixel的multi-class categorization，但Mask RCNN将mask任务和classificaion任务分割开，mask head的输出是K个$m\times m$的binary mask map（K为目标种类数），但最终是用sigmoid而非softmax（实验表明用sigmoid效果好很多），并且mask结果只用其中第$k$个mask map($k$表示class head的预测结果)。这也表明，一旦某个instance已经作为一个整体被分类好了之后，在mask阶段就不用再考虑class的问题了，这也将会使得训练更加容易。&lt;/p&gt;
+
+&lt;p&gt;最终的mask loss是通过将预测的$m\times m$的mask map resize到RoI的size，然后再做pixel-to-pixel的loss。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>RefineDet</title>
       <link>https://x-lai.github.io/post/refinedet/</link>
       <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
