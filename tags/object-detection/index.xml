@@ -32,6 +32,12 @@
 &lt;p&gt;以往实例分割算法的做法是per-pixel的multi-class categorization，但Mask RCNN将mask任务和classificaion任务分割开，mask head的输出是K个$m\times m$的binary mask map（K为目标种类数），但最终是用sigmoid而非softmax（实验表明用sigmoid效果好很多），并且mask结果只用其中第$k$个mask map($k$表示class head的预测结果)。这也表明，一旦某个instance已经作为一个整体被分类好了之后，在mask阶段就不用再考虑class的问题了，这也将会使得训练更加容易。&lt;/p&gt;
 
 &lt;p&gt;最终的mask loss是通过将预测的$m\times m$的mask map resize到RoI的size，然后再做pixel-to-pixel的loss。&lt;/p&gt;
+
+&lt;h2 id=&#34;一些想法&#34;&gt;一些想法&lt;/h2&gt;
+
+&lt;p&gt;RoIAlign尽管修复了misalignment的问题，但是还是一种下采样，所以对于size较大的RoI，RoIAlign是否会导致一些有用的feature丢失？&lt;/p&gt;
+
+&lt;p&gt;可否对每个RoI经过类似RoIPool的层产生pyramid的输出，得到multi-level的特征？&lt;/p&gt;
 </description>
     </item>
     

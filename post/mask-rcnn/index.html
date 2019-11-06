@@ -600,6 +600,12 @@
 
 <p>最终的mask loss是通过将预测的$m\times m$的mask map resize到RoI的size，然后再做pixel-to-pixel的loss。</p>
 
+<h2 id="一些想法">一些想法</h2>
+
+<p>RoIAlign尽管修复了misalignment的问题，但是还是一种下采样，所以对于size较大的RoI，RoIAlign是否会导致一些有用的feature丢失？</p>
+
+<p>可否对每个RoI经过类似RoIPool的层产生pyramid的输出，得到multi-level的特征？</p>
+
     </div>
 
     
