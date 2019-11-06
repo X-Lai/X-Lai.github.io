@@ -5,12 +5,37 @@
     <link>https://x-lai.github.io/tags/object-detection/</link>
       <atom:link href="https://x-lai.github.io/tags/object-detection/index.xml" rel="self" type="application/rss+xml" />
     <description>object detection</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 28 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 06 Nov 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://x-lai.github.io/img/icon-192.png</url>
       <title>object detection</title>
       <link>https://x-lai.github.io/tags/object-detection/</link>
     </image>
+    
+    <item>
+      <title>RefineDet</title>
+      <link>https://x-lai.github.io/post/refinedet/</link>
+      <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>https://x-lai.github.io/post/refinedet/</guid>
+      <description>
+
+&lt;h1 id=&#34;single-shot-refinement-neural-network-for-object-detection&#34;&gt;Single-Shot Refinement Neural Network for Object Detection&lt;/h1&gt;
+
+&lt;p&gt;RefineDet综合了two-stage和one-stage的优点，同时规避其缺点，是一种既准又快的目标检测器。two-stage的检测器有3个优点：1）two-stage structure with sampling heuristics帮助解决class imbalance问题; 2) 有两次对bbox的回归；3）有两阶段对特征的表示（把两个阶段看作两个任务，可以把整个学习看作多任务学习，所以第一个阶段的学习会加强浅层特征）。RefineDet就借助了这几点，能够在第一阶段reject掉easy negative examples，并且先进行一个粗略的bbox regress和pos/neg的打分，再从第二阶段进行精细的regression和classification。&lt;/p&gt;
+
+&lt;h2 id=&#34;architecture&#34;&gt;Architecture&lt;/h2&gt;
+
+&lt;p&gt;类似于FPN，bottom-up部分称为ARM（anchor refinement module），top-down部分称作ODM（object detection module）。两个module都将各个level的feature maps用于预测和分类。ARM进行bbox的粗略预测和binary classification，从而得到coarse bbox坐标和pos/neg打分。然后挑出negative confidence大于某个threshold的那些easy negative examples，再把剩下的anchor送到第二阶段ODM处理。&lt;/p&gt;
+
+&lt;h2 id=&#34;和faster-rcnn对比-以及一些思考&#34;&gt;和Faster RCNN对比，以及一些思考&lt;/h2&gt;
+
+&lt;p&gt;1.RefineDet的第一阶段ARM是在FPN的bottom-up部分做的，而Faster RCNN的第一阶段是在top-down部分做的，所以将ARM放在top-down做是否会更好？&lt;/p&gt;
+
+&lt;p&gt;2.RefineDet将easy negative examples放到后面ODM处理时是不计算它们的损失，从而缓解class imbalance的影响。而Faster RCNN的第二阶段是用roi把每个proposal都用RoI pooling割成固定长度的向量，所以效率低。而前者仍然基于one-stage的框架来做。&lt;/p&gt;
+
+&lt;p&gt;3.把整个regression分两步做，是不是会让第一阶段ARM的训练使得浅层的特征加强，从而导致整体效果的增长？如果是这样的话，是不是其他任务也可以分步来做（用来加强特征），或者再多加一步变成分3步？或者在更浅的层（backbone的部分）再加一步？&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>DenseBox</title>

@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="Fourth-year Undergraduate">
+  <meta name="description" content="Single-Shot Refinement Neural Network for Object Detection RefineDet综合了two-stage和one-stage的优点，同时规避其缺点，是一种既准又快的目标检测器。two-st">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://x-lai.github.io/tags/object-detection/">
+  <link rel="alternate" hreflang="en-us" href="https://x-lai.github.io/post/refinedet/">
 
   
 
@@ -94,14 +94,12 @@
 
 
   
-  <link rel="alternate" href="/tags/object-detection/index.xml" type="application/rss+xml" title="Xin LAI">
-  
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon-32.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://x-lai.github.io/tags/object-detection/">
+  <link rel="canonical" href="https://x-lai.github.io/post/refinedet/">
 
   
   
@@ -114,18 +112,65 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="Xin LAI">
-  <meta property="og:url" content="https://x-lai.github.io/tags/object-detection/">
-  <meta property="og:title" content="object detection | Xin LAI">
-  <meta property="og:description" content="Fourth-year Undergraduate"><meta property="og:image" content="https://x-lai.github.io/img/icon-192.png">
+  <meta property="og:url" content="https://x-lai.github.io/post/refinedet/">
+  <meta property="og:title" content="RefineDet | Xin LAI">
+  <meta property="og:description" content="Single-Shot Refinement Neural Network for Object Detection RefineDet综合了two-stage和one-stage的优点，同时规避其缺点，是一种既准又快的目标检测器。two-st"><meta property="og:image" content="https://x-lai.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://x-lai.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2019-11-06T00:00:00&#43;00:00">
+    
+      <meta property="article:published_time" content="2019-11-06T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2019-11-06T00:00:00&#43;00:00">
   
 
   
 
 
+    
 
+
+
+
+
+
+  
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://x-lai.github.io/post/refinedet/"
+  },
+  "headline": "RefineDet",
+  
+  "datePublished": "2019-11-06T00:00:00Z",
+  "dateModified": "2019-11-06T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Xin LAI"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xin LAI",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://x-lai.github.io/img/icon-512.png"
+    }
+  },
+  "description": "Single-Shot Refinement Neural Network for Object Detection RefineDet综合了two-stage和one-stage的优点，同时规避其缺点，是一种既准又快的目标检测器。two-st"
+}
+</script>
+
+  
 
   
 
@@ -133,10 +178,13 @@
   
 
 
+  
 
 
 
-  <title>object detection | Xin LAI</title>
+
+
+  <title>RefineDet | Xin LAI</title>
 
 </head>
 
@@ -361,144 +409,344 @@
 </nav>
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
+  <article class="article">
 
   
 
+
+
+
+
+
+
+
+
+
+
+
+  
+
   
   
+  
+<div class="article-container pt-3">
+  <h1>RefineDet</h1>
+
+  
+
   
     
-  
-<div class="universal-wrapper pt-3">
-  <h1>object detection</h1>
-
-  
-
-  
-</div>
 
 
 
-<div class="universal-wrapper">
-  
+<div class="article-metadata">
 
   
   
-  <div>
-    <h2><a href="/post/refinedet/">RefineDet</a></h2>
-    <div class="article-style">
-      
-      Single-Shot Refinement Neural Network for Object Detection RefineDet综合了two-stage和one-stage的优点，同时规避其缺点，是一种既准又快的目标检测器。two-st
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/densebox/">DenseBox</a></h2>
-    <div class="article-style">
-      
-      DenseBox: Unifying Landmark Localization with End to End Object Detection DenseBox直接通过FCN框架来同时预测定位以及分类。它主要有2个方面值得学习：1）DenseBox不需要手动设置a
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/mrcnn/">MRCNN</a></h2>
-    <div class="article-style">
-      
-      Object detection via a multi-region &amp; semantic segmentation-aware CNN model 本文提出一种新的CNN模型，包括了multi-region CNN model以及semantic segmentation-aware CNN model。同时还提出一种
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/r-fcn/">R-FCN</a></h2>
-    <div class="article-style">
-      
-      R-FCN: Object Detection via Region-based Fully Convolutional Networks Faster R-CNN之所以比较慢，是因为RPN输出的每个proposal都需要经过detection network。本文提出posi
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/fpn/">FPN</a></h2>
-    <div class="article-style">
-      
-      Feature Pyramid Networks for Object Detection feature pyramids对于识别不同scale的物体有着重要的作用。但是当feature map随着网络的深度由于subsampling
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/retinanet/">RetinaNet</a></h2>
-    <div class="article-style">
-      
-      Focal Loss for Dense Object Detection one-stage的检测器比two-stage的更快更简单，但是在准确度上落后。本文发现最主要的原因在于极度的foregroun
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/ssd/">SSD</a></h2>
-    <div class="article-style">
-      
-      SSD: Single Shot MultiBox Detector 和YOLO一样，SSD也是一种one-stage的object detector。SSD将prediction bounding boxes的输出空间
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/yolo-v2/">YOLO v2</a></h2>
-    <div class="article-style">
-      
-      YOLO v2: YOLO9000 和YOLO v1相比，YOLO v2做出了一些improvements，使得目标检测更快而且效果更好。 Better 1.Batch Normalization：获得
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/yolo-v1/">YOLO v1</a></h2>
-    <div class="article-style">
-      
-      YOLO: You Only Look Once 以往的目标检测器都是分成多个部分进行处理的，本文提出一种新的目标检测框架YOLO，通过单个神经网络直接根据full images来预
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/faster-rcnn/">Faster R-CNN</a></h2>
-    <div class="article-style">
-      
-      Faster R-CNN Fast R-CNN和SPP-net的速度相比于R-CNN而言，已经快了很多，但是仍然还有提升的空间，而且它们的时间瓶颈在于Region prop
-      
-    </div>
-  </div>
-  
 
   
-<nav>
-  <ul class="pagination justify-content-center">
+  <span class="article-date">
     
     
-    <li class="page-item"><a class="page-link" href="/tags/object-detection/page/2/">&raquo;</a></li>
+      
+    
+    2019-11-06
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    2 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://x-lai.github.io/post/refinedet/&amp;text=RefineDet" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://x-lai.github.io/post/refinedet/&amp;t=RefineDet" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=RefineDet&amp;body=https://x-lai.github.io/post/refinedet/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://x-lai.github.io/post/refinedet/&amp;title=RefineDet" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=RefineDet%20https://x-lai.github.io/post/refinedet/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://x-lai.github.io/post/refinedet/&amp;title=RefineDet" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
     
   </ul>
-</nav>
+</div>
 
+
+  
 
 </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<h1 id="single-shot-refinement-neural-network-for-object-detection">Single-Shot Refinement Neural Network for Object Detection</h1>
+
+<p>RefineDet综合了two-stage和one-stage的优点，同时规避其缺点，是一种既准又快的目标检测器。two-stage的检测器有3个优点：1）two-stage structure with sampling heuristics帮助解决class imbalance问题; 2) 有两次对bbox的回归；3）有两阶段对特征的表示（把两个阶段看作两个任务，可以把整个学习看作多任务学习，所以第一个阶段的学习会加强浅层特征）。RefineDet就借助了这几点，能够在第一阶段reject掉easy negative examples，并且先进行一个粗略的bbox regress和pos/neg的打分，再从第二阶段进行精细的regression和classification。</p>
+
+<h2 id="architecture">Architecture</h2>
+
+<p>类似于FPN，bottom-up部分称为ARM（anchor refinement module），top-down部分称作ODM（object detection module）。两个module都将各个level的feature maps用于预测和分类。ARM进行bbox的粗略预测和binary classification，从而得到coarse bbox坐标和pos/neg打分。然后挑出negative confidence大于某个threshold的那些easy negative examples，再把剩下的anchor送到第二阶段ODM处理。</p>
+
+<h2 id="和faster-rcnn对比-以及一些思考">和Faster RCNN对比，以及一些思考</h2>
+
+<p>1.RefineDet的第一阶段ARM是在FPN的bottom-up部分做的，而Faster RCNN的第一阶段是在top-down部分做的，所以将ARM放在top-down做是否会更好？</p>
+
+<p>2.RefineDet将easy negative examples放到后面ODM处理时是不计算它们的损失，从而缓解class imbalance的影响。而Faster RCNN的第二阶段是用roi把每个proposal都用RoI pooling割成固定长度的向量，所以效率低。而前者仍然基于one-stage的框架来做。</p>
+
+<p>3.把整个regression分两步做，是不是会让第一阶段ARM的训练使得浅层的特征加强，从而导致整体效果的增长？如果是这样的话，是不是其他任务也可以分步来做（用来加强特征），或者再多加一步变成分3步？或者在更浅的层（backbone的部分）再加一步？</p>
+
+    </div>
+
+    
+
+
+
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/object-detection/">object detection</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_huc1427b3dbbf635ca43eeb36be93c81a0_715777_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://x-lai.github.io/">Xin LAI</a></h5>
+      <h6 class="card-subtitle">Fourth-year Undergraduate</h6>
+      <p class="card-text">My research interests include object detection, image debluring.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:laixin1998@outlook.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/img/wechat.jpg" >
+        <i class="fab fa-weixin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/X-Lai" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/densebox/">DenseBox</a></li>
+          
+          <li><a href="/post/mrcnn/">MRCNN</a></li>
+          
+          <li><a href="/post/r-fcn/">R-FCN</a></li>
+          
+          <li><a href="/post/fpn/">FPN</a></li>
+          
+          <li><a href="/post/retinanet/">RetinaNet</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+  
+    <div id="commento"></div>
+<script src="https://cdn.commento.io/js/commento.js" defer></script>
+
+  
+</section>
+
+
+
+  </div>
+</article>
 
       
 
