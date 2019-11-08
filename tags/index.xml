@@ -5,7 +5,7 @@
     <link>https://x-lai.github.io/tags/</link>
       <atom:link href="https://x-lai.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 06 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 08 Nov 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://x-lai.github.io/img/icon-192.png</url>
       <title>Tags</title>
@@ -13,18 +13,18 @@
     </image>
     
     <item>
-      <title>instance segmentation</title>
-      <link>https://x-lai.github.io/tags/instance-segmentation/</link>
-      <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>https://x-lai.github.io/tags/instance-segmentation/</guid>
+      <title>object detection</title>
+      <link>https://x-lai.github.io/tags/object-detection/</link>
+      <pubDate>Fri, 08 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>https://x-lai.github.io/tags/object-detection/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>object detection</title>
-      <link>https://x-lai.github.io/tags/object-detection/</link>
+      <title>instance segmentation</title>
+      <link>https://x-lai.github.io/tags/instance-segmentation/</link>
       <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>https://x-lai.github.io/tags/object-detection/</guid>
+      <guid>https://x-lai.github.io/tags/instance-segmentation/</guid>
       <description></description>
     </item>
     

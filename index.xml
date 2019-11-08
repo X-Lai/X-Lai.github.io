@@ -5,12 +5,65 @@
     <link>https://x-lai.github.io/</link>
       <atom:link href="https://x-lai.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Xin LAI</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 06 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 08 Nov 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://x-lai.github.io/img/icon-192.png</url>
       <title>Xin LAI</title>
       <link>https://x-lai.github.io/</link>
     </image>
+    
+    <item>
+      <title>CornerNet</title>
+      <link>https://x-lai.github.io/post/cornernet/</link>
+      <pubDate>Fri, 08 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>https://x-lai.github.io/post/cornernet/</guid>
+      <description>
+
+&lt;h1 id=&#34;cornernet-detecting-objects-as-paired-keypoints&#34;&gt;CornerNet: Detecting Objects as Paired Keypoints&lt;/h1&gt;
+
+&lt;p&gt;CornerNet是一种one-stage的检测器。它提出了目标检测的一种anchor-free的新思路，将预测bbox看作预测关键点，把bbox的左上角和右下角看作是关键点。而且它并没有直接对关键点直接进行回归预测，而是预测heatmap（heatmap在它的每个location都会预测出是关键点的score，$C$个大小为$H\times W$的channels，$C$为种类数）。分别得到左上角点和右下角点之后，通过embedding来判断每个pair是否属于同一object。另外，由于original image和heatmap的resolution不一致，所以在对应的时候会产生误差，所以还需要预测offset。&lt;/p&gt;
+
+&lt;p&gt;以往的anchor方法有两个缺点：1）需要很多anchor才能准确覆盖gt bbox，所以造成class imbalance以及训练慢；2）anchor需要设置很多超参，而且有很多选择。&lt;/p&gt;
+
+&lt;h2 id=&#34;corner-pooling&#34;&gt;Corner Pooling&lt;/h2&gt;
+
+&lt;p&gt;对于每个object而言，想要得到它的bbox的左上角坐标，通过人眼分别向左和向上扫描得到它在这两个方向的边界。所以受到这个启发，corner pooling结果的每个location的值等于该位置一直到输入图像右边边界的向量的最大值与到输入图像下边边界的向量的最大值的和。这样，输出也显式地表示了bbox的左上角的位置。这样做相当于在提取特征时施加一定人为强制的prior。&lt;/p&gt;
+
+&lt;p&gt;这种根据任务目标来设计pooling操作的思想时非常新颖的，值得学习和借鉴。&lt;/p&gt;
+
+&lt;h2 id=&#34;loss&#34;&gt;Loss&lt;/h2&gt;
+
+&lt;p&gt;loss分为三部分：1）detection loss; 2) offset loss; 3) push/pull loss&lt;/p&gt;
+
+&lt;h3 id=&#34;detection-loss&#34;&gt;detection loss&lt;/h3&gt;
+
+&lt;p&gt;在设定heatmap的gt的时候，本文并不是只把所有框的左上/右下角作为gt，而是以它们为圆心和一定长度为半径的一个圆的范围内点都视为gt（具体是用高斯分布来获取周围点的label）。并且最终还使用了一个focal loss的变形来缓解class imbalance的问题：&lt;/p&gt;
+
+&lt;p&gt;$L_{det}=\frac{-1}{N} \sum\limits_{c=1}^{C}\sum\limits_{i=1}^{H}\sum\limits_{j=1}^{W}\left \{ \begin{aligned} &amp;amp; (1-p_{cij})^\alpha log(p_{cij})  &amp;amp;if \  y_{cij} = 1 \\ &amp;amp; (1-y_{cij})^\beta (p_{cij})^\alpha log(1-p_{cij})  &amp;amp;otherwise \end{aligned} \right.$&lt;/p&gt;
+
+&lt;p&gt;其中$p_{cij}$表示heatmap的第c个channel，第i,j个位置的预测值，$y_{cij}$是第c个channel，第i,j个位置的gt值。&lt;/p&gt;
+
+&lt;h3 id=&#34;offset-loss&#34;&gt;offset loss&lt;/h3&gt;
+
+&lt;p&gt;因为heatmap通常要比image小，所以需要将image的$(x,y)$位置映射到heatmap的$(\lfloor \frac{x}{n} \rfloor, \lfloor \frac{y}{n} \rfloor)$位置上。但是同时就会造成一些误差（因为$\frac{x}{n}$不是一个整数），为了解决这个问题，就需要再预测offset。本文对所有类都只采用一个offset，并对每个location都输出一个offset $o_k=(\frac{x_k}{n}-\lfloor \frac{x_k}{n} \rfloor, \frac{y_k}{n}-\lfloor \frac{y_k}{n} \rfloor)$。&lt;/p&gt;
+
+&lt;p&gt;$L_{off}=\frac{1}{N}\sum\limits_{k=1}^{N}SmoothL1Loss(o_k,\hat{o}_k)$&lt;/p&gt;
+
+&lt;p&gt;其中N是object数量。&lt;/p&gt;
+
+&lt;h3 id=&#34;push-pull-loss&#34;&gt;push/pull loss&lt;/h3&gt;
+
+&lt;p&gt;此外，为了得知一对top-left corner和bottom-right corner是否表示的是同一个object，本文对每个location都预测了embedding。所以本文设计了push/pull loss来训练embedding。&lt;/p&gt;
+
+&lt;p&gt;$L_{pull}=\frac{1}{N}\sum\limits_{k=1}^{N}[(e_{t_k}-e_k)^2+(e_{b_k}-e_k)^2]$&lt;/p&gt;
+
+&lt;p&gt;$L_{push}=\frac{1}{N(N-1)}\sum\limits_{k=1}^N\sum\limits_{j=1,j\neq k}^N max(0, \Delta- |e_k-e_j| ) $&lt;/p&gt;
+
+&lt;p&gt;其中N表示object数量，$e_{t_k}$表示top-left corner的embedding，$e_{b_k}$表示第k个object的bottom-right corner的embedding，$e_k$表示它们的平均值。&lt;/p&gt;
+
+&lt;p&gt;总loss：$L=L_{det}+\alpha L_{pull} + \beta L_{push} + \gamma L_{off}$&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Mask RCNN</title>
