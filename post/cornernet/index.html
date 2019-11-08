@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="Fourth-year Undergraduate">
+  <meta name="description" content="CornerNet: Detecting Objects as Paired Keypoints CornerNet是一种one-stage的检测器。它提出了目标检测的一种anchor-free的新思路，将预测bbox看作预测">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://x-lai.github.io/tags/object-detection/">
+  <link rel="alternate" hreflang="en-us" href="https://x-lai.github.io/post/cornernet/">
 
   
 
@@ -94,14 +94,12 @@
 
 
   
-  <link rel="alternate" href="/tags/object-detection/index.xml" type="application/rss+xml" title="Xin LAI">
-  
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon-32.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://x-lai.github.io/tags/object-detection/">
+  <link rel="canonical" href="https://x-lai.github.io/post/cornernet/">
 
   
   
@@ -114,18 +112,65 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="Xin LAI">
-  <meta property="og:url" content="https://x-lai.github.io/tags/object-detection/">
-  <meta property="og:title" content="object detection | Xin LAI">
-  <meta property="og:description" content="Fourth-year Undergraduate"><meta property="og:image" content="https://x-lai.github.io/img/icon-192.png">
+  <meta property="og:url" content="https://x-lai.github.io/post/cornernet/">
+  <meta property="og:title" content="CornerNet | Xin LAI">
+  <meta property="og:description" content="CornerNet: Detecting Objects as Paired Keypoints CornerNet是一种one-stage的检测器。它提出了目标检测的一种anchor-free的新思路，将预测bbox看作预测"><meta property="og:image" content="https://x-lai.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://x-lai.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2019-11-08T00:00:00&#43;00:00">
+    
+      <meta property="article:published_time" content="2019-11-08T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2019-11-08T00:00:00&#43;00:00">
   
 
   
 
 
+    
 
+
+
+
+
+
+  
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://x-lai.github.io/post/cornernet/"
+  },
+  "headline": "CornerNet",
+  
+  "datePublished": "2019-11-08T00:00:00Z",
+  "dateModified": "2019-11-08T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Xin LAI"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xin LAI",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://x-lai.github.io/img/icon-512.png"
+    }
+  },
+  "description": "CornerNet: Detecting Objects as Paired Keypoints CornerNet是一种one-stage的检测器。它提出了目标检测的一种anchor-free的新思路，将预测bbox看作预测"
+}
+</script>
+
+  
 
   
 
@@ -133,10 +178,13 @@
   
 
 
+  
 
 
 
-  <title>object detection | Xin LAI</title>
+
+
+  <title>CornerNet | Xin LAI</title>
 
 </head>
 
@@ -361,99 +409,372 @@
 </nav>
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
+  <article class="article">
 
   
 
+
+
+
+
+
+
+
+
+
+
+
+  
+
   
   
+  
+<div class="article-container pt-3">
+  <h1>CornerNet</h1>
+
+  
+
   
     
-  
-<div class="universal-wrapper pt-3">
-  <h1>object detection</h1>
-
-  
-
-  
-</div>
 
 
 
-<div class="universal-wrapper">
-  
+<div class="article-metadata">
 
   
   
-  <div>
-    <h2><a href="/post/yolo-v1/">YOLO v1</a></h2>
-    <div class="article-style">
-      
-      YOLO: You Only Look Once 以往的目标检测器都是分成多个部分进行处理的，本文提出一种新的目标检测框架YOLO，通过单个神经网络直接根据full images来预
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/faster-rcnn/">Faster R-CNN</a></h2>
-    <div class="article-style">
-      
-      Faster R-CNN Fast R-CNN和SPP-net的速度相比于R-CNN而言，已经快了很多，但是仍然还有提升的空间，而且它们的时间瓶颈在于Region prop
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/fast-rcnn/">Fast R-CNN</a></h2>
-    <div class="article-style">
-      
-      Fast R-CNN 相比于classification，object detection任务准确度更低，难度更大，主要由于两个挑战： 1.需要处理大量的prop
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/sppnet/">SPPNet</a></h2>
-    <div class="article-style">
-      
-      SPPNet：spatial pyramid pooling network SPP spatial pyramid pooling：现存的cnn几乎都要求输入图片是固定size的。这种要求是人为的，而且可能会降低对图
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/r-cnn-regions-with-cnn-feature/">R-CNN</a></h2>
-    <div class="article-style">
-      
-      R-CNN: Regions with CNN feature 1.人们可以将强大的卷积神经网络应用在自底向上的region proposals上，用于定位和分割对象 2.当标记的训练数据稀少时，可
-      
-    </div>
-  </div>
-  
 
   
-<nav>
-  <ul class="pagination justify-content-center">
+  <span class="article-date">
     
-    <li class="page-item"><a class="page-link" href="/tags/object-detection/">&laquo;</a></li>
     
+      
+    
+    2019-11-08
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    3 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://x-lai.github.io/post/cornernet/&amp;text=CornerNet" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://x-lai.github.io/post/cornernet/&amp;t=CornerNet" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=CornerNet&amp;body=https://x-lai.github.io/post/cornernet/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://x-lai.github.io/post/cornernet/&amp;title=CornerNet" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=CornerNet%20https://x-lai.github.io/post/cornernet/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://x-lai.github.io/post/cornernet/&amp;title=CornerNet" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
     
   </ul>
-</nav>
+</div>
 
+
+  
 
 </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<h1 id="cornernet-detecting-objects-as-paired-keypoints">CornerNet: Detecting Objects as Paired Keypoints</h1>
+
+<p>CornerNet是一种one-stage的检测器。它提出了目标检测的一种anchor-free的新思路，将预测bbox看作预测关键点，把bbox的左上角和右下角看作是关键点。而且它并没有直接对关键点直接进行回归预测，而是预测heatmap（heatmap在它的每个location都会预测出是关键点的score，$C$个大小为$H\times W$的channels，$C$为种类数）。分别得到左上角点和右下角点之后，通过embedding来判断每个pair是否属于同一object。另外，由于original image和heatmap的resolution不一致，所以在对应的时候会产生误差，所以还需要预测offset。</p>
+
+<p>以往的anchor方法有两个缺点：1）需要很多anchor才能准确覆盖gt bbox，所以造成class imbalance以及训练慢；2）anchor需要设置很多超参，而且有很多选择。</p>
+
+<h2 id="corner-pooling">Corner Pooling</h2>
+
+<p>对于每个object而言，想要得到它的bbox的左上角坐标，通过人眼分别向左和向上扫描得到它在这两个方向的边界。所以受到这个启发，corner pooling结果的每个location的值等于该位置一直到输入图像右边边界的向量的最大值与到输入图像下边边界的向量的最大值的和。这样，输出也显式地表示了bbox的左上角的位置。这样做相当于在提取特征时施加一定人为强制的prior。</p>
+
+<p>这种根据任务目标来设计pooling操作的思想时非常新颖的，值得学习和借鉴。</p>
+
+<h2 id="loss">Loss</h2>
+
+<p>loss分为三部分：1）detection loss; 2) offset loss; 3) push/pull loss</p>
+
+<h3 id="detection-loss">detection loss</h3>
+
+<p>在设定heatmap的gt的时候，本文并不是只把所有框的左上/右下角作为gt，而是以它们为圆心和一定长度为半径的一个圆的范围内点都视为gt（具体是用高斯分布来获取周围点的label）。并且最终还使用了一个focal loss的变形来缓解class imbalance的问题：</p>
+
+<p>$L_{det}=\frac{-1}{N} \sum\limits_{c=1}^{C}\sum\limits_{i=1}^{H}\sum\limits_{j=1}^{W}\left \{ \begin{aligned} &amp; (1-p_{cij})^\alpha log(p_{cij})  &amp;if \  y_{cij} = 1 \\ &amp; (1-y_{cij})^\beta (p_{cij})^\alpha log(1-p_{cij})  &amp;otherwise \end{aligned} \right.$</p>
+
+<p>其中$p_{cij}$表示heatmap的第c个channel，第i,j个位置的预测值，$y_{cij}$是第c个channel，第i,j个位置的gt值。</p>
+
+<h3 id="offset-loss">offset loss</h3>
+
+<p>因为heatmap通常要比image小，所以需要将image的$(x,y)$位置映射到heatmap的$(\lfloor \frac{x}{n} \rfloor, \lfloor \frac{y}{n} \rfloor)$位置上。但是同时就会造成一些误差（因为$\frac{x}{n}$不是一个整数），为了解决这个问题，就需要再预测offset。本文对所有类都只采用一个offset，并对每个location都输出一个offset $o_k=(\frac{x_k}{n}-\lfloor \frac{x_k}{n} \rfloor, \frac{y_k}{n}-\lfloor \frac{y_k}{n} \rfloor)$。</p>
+
+<p>$L_{off}=\frac{1}{N}\sum\limits_{k=1}^{N}SmoothL1Loss(o_k,\hat{o}_k)$</p>
+
+<p>其中N是object数量。</p>
+
+<h3 id="push-pull-loss">push/pull loss</h3>
+
+<p>此外，为了得知一对top-left corner和bottom-right corner是否表示的是同一个object，本文对每个location都预测了embedding。所以本文设计了push/pull loss来训练embedding。</p>
+
+<p>$L_{pull}=\frac{1}{N}\sum\limits_{k=1}^{N}[(e_{t_k}-e_k)^2+(e_{b_k}-e_k)^2]$</p>
+
+<p>$L_{push}=\frac{1}{N(N-1)}\sum\limits_{k=1}^N\sum\limits_{j=1,j\neq k}^N max(0, \Delta- |e_k-e_j| ) $</p>
+
+<p>其中N表示object数量，$e_{t_k}$表示top-left corner的embedding，$e_{b_k}$表示第k个object的bottom-right corner的embedding，$e_k$表示它们的平均值。</p>
+
+<p>总loss：$L=L_{det}+\alpha L_{pull} + \beta L_{push} + \gamma L_{off}$</p>
+
+    </div>
+
+    
+
+
+
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/object-detection/">object detection</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_huc1427b3dbbf635ca43eeb36be93c81a0_715777_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://x-lai.github.io/">Xin LAI</a></h5>
+      <h6 class="card-subtitle">Fourth-year Undergraduate</h6>
+      <p class="card-text">My research interests include object detection, image debluring.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:laixin1998@outlook.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/img/wechat.jpg" >
+        <i class="fab fa-weixin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/X-Lai" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/mask-rcnn/">Mask RCNN</a></li>
+          
+          <li><a href="/post/refinedet/">RefineDet</a></li>
+          
+          <li><a href="/post/densebox/">DenseBox</a></li>
+          
+          <li><a href="/post/mrcnn/">MRCNN</a></li>
+          
+          <li><a href="/post/r-fcn/">R-FCN</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+  
+    <div id="commento"></div>
+<script src="https://cdn.commento.io/js/commento.js" defer></script>
+
+  
+</section>
+
+
+
+  </div>
+</article>
 
       
 
