@@ -5,12 +5,45 @@
     <link>https://x-lai.github.io/</link>
       <atom:link href="https://x-lai.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Xin LAI</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 08 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 10 Nov 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://x-lai.github.io/img/icon-192.png</url>
       <title>Xin LAI</title>
       <link>https://x-lai.github.io/</link>
     </image>
+    
+    <item>
+      <title>FCOS</title>
+      <link>https://x-lai.github.io/post/fcos/</link>
+      <pubDate>Sun, 10 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>https://x-lai.github.io/post/fcos/</guid>
+      <description>
+
+&lt;h1 id=&#34;fcos-fully-convolutional-one-stage-object-detection&#34;&gt;FCOS: Fully Convolutional One-Stage Object Detection&lt;/h1&gt;
+
+&lt;p&gt;FCOS是一种新的anchor free的检测器，它利用gt bbox中的每个点来预测该bbox，同时利用center-ness来reject那些质量低的bbox。FCOS非常简单，它把目标检测任务看作一种per-pixel的任务，同时也达到了sota。&lt;/p&gt;
+
+&lt;p&gt;对于每个gtbox内的点，预测它到框的4个边界的距离（$(x_0^{(i)}, y_0^{(i)}),(x_1^{(i)}, y_1^{(i)})$分别是bbox的左上角和右下角）:&lt;/p&gt;
+
+&lt;p&gt;$l^* = x-x_0^{(i)}, t^* = y-y_0^{(i)}, r^* = x_1^{(i)}-x, b^* = y_1^{(i)}-y$&lt;/p&gt;
+
+&lt;p&gt;此外还预测它的类别，但是只在最后使用sigmoid（C个binary classifiers）。&lt;/p&gt;
+
+&lt;p&gt;另外，为了减少那些bbox内预测质量差的点的权重，还需要预测center-ness，本文定义center-ness如下：&lt;/p&gt;
+
+&lt;p&gt;$$ centerness^* = \sqrt{\frac{min(l^* ,r^* )}{max(l^* ,r^* )}\times \frac{min(t^* ,b^* )}{max(t^* ,b^* )}} $$&lt;/p&gt;
+
+&lt;p&gt;另外，在某个点位于多个gt bbox的重叠位置时，将面积最小的那个bbox划分给该点即可。因为（1）首先，当多个bbox发生重叠时，这些bbox并不一定具有相似的size，同时FPN又有多个level的feature map，所以在给不同level分配bbox的时候就很可能将重叠的bbox分配到不同level的feature map上；（2）其次，尽管重叠的bbox都被分到相同level的feature map上，哪怕其中一个bbox没有划分给重叠部分的点，这个bbox还会划分给剩余的点。所以这就保证了FCOS这种设计在这种情况下也是合理可行的。&lt;/p&gt;
+
+&lt;p&gt;还有一个问题就是stride的问题，因为stride的问题，导致从原图像的bbox映射到feature map上时会产生误差，但是FPN有多个level的feature map，所以在很大程度上能够缓解这个问题。&lt;/p&gt;
+
+&lt;h2 id=&#34;缺点&#34;&gt;缺点&lt;/h2&gt;
+
+&lt;p&gt;1.在regress某点到四个边界的距离时，没有考虑receptive field的问题。例如，让一个bbox的右上角的点去预测其和左边边界的距离，是相对困难的，因为1）当bbox较大时，这个点的感受野就可能到不了左边边界，2）要得其到左边边界的距离，仅仅依靠它的感受野有可能并不奏效，因为一个object的左边界时取决于整个物体的左边，而非局部。（能否将整个bbox的点分工，一部分负责预测到左边边界的距离，一部分预测到右边边界的距离，然后再综合起来形成所有可能的bbox？）（能否像CornerNet的Corner Pooling一样设计一个能够辅助感知边界或角点的操作）&lt;/p&gt;
+
+&lt;p&gt;2.考虑一个bbox的“重心”，而非“中心”。是否效果会比&amp;rdquo;中心&amp;rdquo;要好？因为不同物体在bbox中姿态或形状不同，不一定就规则地在bbox中，也未必中心点一定就是预测bbox最准确的。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>CornerNet</title>
