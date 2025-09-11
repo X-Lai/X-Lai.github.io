@@ -63,10 +63,10 @@ ga('send', 'pageview');
 <!-- <h2>Biography </h2> -->
 <p>
 	</p><p>
-    I am currently a researcher at TikTok, researching on Large Multimodal Models. Before that, I obtained my Ph.D degree in 2024 from the Chinese University of Hong Kong (CUHK), supervised by <a href="https://jiaya.me/">Prof. Jiaya Jia</a> and <a href="https://lwwangcse.github.io/">Prof. Liwei Wang</a>.
+    I am currently a researcher at TikTok, researching on Large Multimodal Models (LMMs). Before that, I obtained my Ph.D degree in 2024 from the Chinese University of Hong Kong (CUHK), supervised by <a href="https://jiaya.me/">Prof. Jiaya Jia</a> and <a href="https://lwwangcse.github.io/">Prof. Liwei Wang</a>.
 	I also received the Bachelor's Degree at <a href="http://encs.hit.edu.cn/">Harbin Institute of Technology (HIT)</a> in 2020.
   	</p><p>
-	My current research interest includes Multimodal LLMs, Long-term Reasoning for LLMs.
+	My current research interest includes multimodal understanding and multimodal agents.
 	</p><p>
 	<b>We are actively <dev style="color:red;">hiring research interns</dev> in vision-language fundation models. If you're interested, welcome to contact me by email with your resume.</b>
 	</p>
@@ -76,6 +76,9 @@ ga('send', 'pageview');
 <h2>Recent News</h2>
 <table id="tbTeaching" border="0" width="100%">
 	<ul>
+		<li>
+			[2025/09] 🔥 We release <a href="https://github.com/Mini-o3/Mini-o3">Mini-o3</a> and a full training recipe to reproduce <dev style="color:red;">OpenAI o3-style thinking-with-images capability</dev>. Welcome to check it out! <a href="https://mini-o3.github.io/">[Project Page]</a>
+		</li>
 		<li>
 			[2024/06] 🔥 We release <a href="https://github.com/dvlab-research/Step-DPO">Step-DPO</a>, a simple, effective, and data-efficient way to significantly enhance the mathematical reasoning abilities of LLMs. Welcome to the <a href="https://github.com/dvlab-research/Step-DPO">GitHub Page</a>! <dev style="color:red;">The resulting model achieves 70.8% and 94.0% accuracy on MATH and GSM8K, respectively, outperforming GPT-4-1106, Gemini-1.5-Pro, Claude-3-Opus!</dev>
 		</li>
@@ -120,6 +123,39 @@ ga('send', 'pageview');
 	<tbody>
 
 	<tr>
+		<td><img width="300" style="padding: 20px;" src="./files/mini-o3.png"></td>
+		<td>
+			<div><b>Mini-o3: Scaling Up Reasoning Patterns and Interaction Turns for Visual Search</b></div>
+			<div style="font-size: 15px"><b>Xin Lai</b>*, Junyi Li*, Wei Li, Tao Liu, Tianjian Li, Hengshuang Zhao</div>
+			<div>arXiv pre-print</div>
+			<div>[<a href="https://arxiv.org/pdf/2509.07969"><b>paper</b></a>|<a href="https://github.com/Mini-o3/Mini-o3"><b>code</b></a>|<a href="https://mini-o3.github.io/"><b>project page</b></a>]</div>
+			<div><p style="color:red;">A full training recipe to reproduce OpenAI o3-style thinking-with-images capability.</p></div>
+		</td>
+	</tr>
+
+	<tr>
+		<td><img width="300" style="padding: 20px;" src="./files/lisa.png"></td>
+		<td>
+			<div><b>LISA: Reasoning Segmentation via Large Language Model</b></div>
+			<div style="font-size: 15px"><b>Xin Lai*</b>, Zhuotao Tian*, Yukang Chen, Yanwei Li, Yuhui Yuan, Shu Liu, Jiaya Jia</div>
+			<div>CVPR, 2024 <b style="color:red;">(Oral, 3.3% acceptance rate)</b></div>
+			<div>[<a href="https://arxiv.org/pdf/2308.00692.pdf"><b>paper</b></a>|<a href="https://github.com/dvlab-research/LISA.git"><b>code</b></a>]</div>
+			<div><p style="color:red;">Over 2,400 GitHub Stars!</p></div>
+		</td>
+	</tr>
+
+	<tr>
+		<td><img width="300" style="padding: 20px;" src="./files/vision_think.png"></td>
+		<td>
+			<div><b>VisionThink: Smart and Efficient Vision Language Model via Reinforcement Learning</b></div>
+			<div style="font-size: 15px">Senqiao Yang*, Junyi Li*, <b>Xin Lai</b>*, Bei Yu, Hengshuang Zhao, Jiaya Jia</div>
+			<div>arXiv pre-print</div>
+			<div>[<a href="https://arxiv.org/abs/2507.13348"><b>paper</b></a>|<a href="https://github.com/dvlab-research/VisionThink"><b>code</b></a>]</div>
+			<div>A new paradigm of efficient VLMs with token compression.</p></div>
+		</td>
+	</tr>
+
+	<tr>
 		<td><img width="300" style="padding: 20px;" src="./files/step_dpo.png"></td>
 		<td>
 			<div><b>Step-DPO: Step-wise Preference Optimization for Long-chain Reasoning of LLMs</b></div>
@@ -131,13 +167,13 @@ ga('send', 'pageview');
 	</tr>
 
 	<tr>
-		<td><img width="300" style="padding: 20px;" src="./files/lisa.png"></td>
+		<td><img width="300" style="padding: 20px;" src="./files/longlora.png"></td>
 		<td>
-			<div><b>LISA: Reasoning Segmentation via Large Language Model</b></div>
-			<div style="font-size: 15px"><b>Xin Lai*</b>, Zhuotao Tian*, Yukang Chen, Yanwei Li, Yuhui Yuan, Shu Liu, Jiaya Jia</div>
-			<div>CVPR, 2024 <b style="color:red;">(Oral, 3.3% acceptance rate)</b></div>
-			<div>[<a href="https://arxiv.org/pdf/2308.00692.pdf"><b>paper</b></a>|<a href="https://github.com/dvlab-research/LISA.git"><b>code</b></a>]</div>
-			<div><p style="color:red;">Over 1,500 GitHub Stars!</p></div>
+			<div><b>LongLoRA: Efficient Fine-tuning of Long-Context Large Language Models</b></div>
+			<div style="font-size: 15px">Yukang Chen, Shengju Qian, Haotian Tang, <b>Xin Lai</b>, Zhijian Liu, Song Han, Jiaya Jia</div>
+			<div>ICLR, 2024 <b style="color:red;">(Oral Presentation)</b></div>
+			<div>[<a href="https://arxiv.org/pdf/2309.12307"><b>paper</b></a>|<a href="https://github.com/dvlab-research/LongLoRA"><b>code</b></a>]</div>
+			<div><p style="color:red;">Over 2,700 GitHub Stars!</p></div>
 		</td>
 	</tr>
 
